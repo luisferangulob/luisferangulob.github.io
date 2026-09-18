@@ -61,8 +61,7 @@ body {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 
     z-index: 1000;
 }
@@ -183,19 +182,15 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
 
-    padding: 11px 18px;
+    padding: 12px 19px;
 
     color: #f0f6fc;
-
     text-decoration: none;
 
-    border:
-        1px solid rgba(88, 166, 255, 0.35);
-
+    border: 1px solid rgba(88, 166, 255, 0.35);
     border-radius: 10px;
 
-    background:
-        rgba(88, 166, 255, 0.06);
+    background: rgba(88, 166, 255, 0.06);
 
     transition:
         transform 0.2s ease,
@@ -207,16 +202,13 @@ nav a:hover {
     transform: translateY(-2px);
 
     border-color: #58a6ff;
-
-    background:
-        rgba(88, 166, 255, 0.14);
+    background: rgba(88, 166, 255, 0.14);
 }
 
 .primary-link {
     color: #0d1117;
 
     background: #58a6ff;
-
     border-color: #58a6ff;
 
     font-weight: 700;
@@ -251,16 +243,12 @@ nav a:hover {
 
     gap: 24px;
 
-    border:
-        1px solid rgba(88, 166, 255, 0.20);
-
+    border: 1px solid rgba(88, 166, 255, 0.20);
     border-radius: 28px;
 
-    background:
-        rgba(13, 17, 23, 0.65);
+    background: rgba(13, 17, 23, 0.65);
 
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
 }
 
 .animation-placeholder span {
@@ -278,12 +266,11 @@ nav a:hover {
     width: 1px;
     height: 65px;
 
-    background:
-        linear-gradient(
-            transparent,
-            #58a6ff,
-            transparent
-        );
+    background: linear-gradient(
+        transparent,
+        #58a6ff,
+        transparent
+    );
 }
 
 
@@ -300,8 +287,7 @@ nav a:hover {
 
     padding: 110px 0;
 
-    border-top:
-        1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .section-label {
@@ -351,7 +337,6 @@ nav a:hover {
     .hero-art {
         padding-bottom: 50px;
     }
-
 }
 
 
