@@ -38,6 +38,14 @@ body {
     background-size: 64px 64px;
 }
 
+main {
+    overflow: hidden;
+}
+
+section {
+    scroll-margin-top: 95px;
+}
+
 
 /* =========================
    NAVIGATION
@@ -181,6 +189,7 @@ nav a:hover {
 .hero-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     padding: 12px 19px;
 
@@ -202,6 +211,7 @@ nav a:hover {
     transform: translateY(-2px);
 
     border-color: #58a6ff;
+
     background: rgba(88, 166, 255, 0.14);
 }
 
@@ -232,7 +242,6 @@ nav a:hover {
 .animation-placeholder {
     width: 100%;
     max-width: 430px;
-
     min-height: 430px;
 
     display: flex;
@@ -291,6 +300,8 @@ nav a:hover {
 }
 
 .section-label {
+    margin: 0;
+
     color: #58a6ff;
 
     font-family: monospace;
@@ -301,9 +312,14 @@ nav a:hover {
     letter-spacing: 0.12em;
 }
 
+
 /* =========================
    ABOUT
 ========================= */
+
+.about-section {
+    min-height: auto;
+}
 
 .about-grid {
     display: grid;
@@ -311,7 +327,7 @@ nav a:hover {
 
     gap: 80px;
 
-    margin-top: 35px;
+    margin-top: 38px;
 }
 
 .about-heading h2 {
@@ -339,13 +355,20 @@ nav a:hover {
     line-height: 1.85;
 }
 
+.about-copy p:last-child {
+    margin-bottom: 0;
+}
+
 .about-copy strong {
     color: #f0f6fc;
+
     font-weight: 600;
 }
 
 
-/* ABOUT CARDS */
+/* =========================
+   ABOUT CARDS
+========================= */
 
 .about-details {
     display: grid;
@@ -357,19 +380,49 @@ nav a:hover {
 }
 
 .detail-card {
-    min-height: 260px;
+    position: relative;
+
+    min-height: 280px;
 
     padding: 30px;
+
+    overflow: hidden;
 
     border: 1px solid rgba(88, 166, 255, 0.18);
     border-radius: 18px;
 
-    background: rgba(13, 17, 23, 0.72);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 27, 34, 0.92),
+            rgba(13, 17, 23, 0.82)
+        );
 
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
-        background 0.25s ease;
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.detail-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #58a6ff,
+        transparent
+    );
+
+    opacity: 0.65;
 }
 
 .detail-card:hover {
@@ -377,7 +430,15 @@ nav a:hover {
 
     border-color: rgba(88, 166, 255, 0.55);
 
-    background: rgba(22, 27, 34, 0.88);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26, 34, 44, 0.96),
+            rgba(13, 17, 23, 0.90)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.22);
 }
 
 .detail-number {
@@ -392,9 +453,13 @@ nav a:hover {
 }
 
 .detail-card h3 {
-    margin: 50px 0 14px;
+    margin: 65px 0 14px;
 
-    font-size: 1.5rem;
+    color: #f0f6fc;
+
+    font-size: 1.55rem;
+
+    letter-spacing: -0.02em;
 }
 
 .detail-card p {
@@ -402,12 +467,13 @@ nav a:hover {
 
     color: #8b949e;
 
+    font-size: 0.98rem;
     line-height: 1.7;
 }
 
 
 /* =========================
-   MOBILE
+   MOBILE — TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -441,17 +507,38 @@ nav a:hover {
     .hero-art {
         padding-bottom: 50px;
     }
-   
-.about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .about-heading h2 {
+        max-width: 700px;
+    }
+
+    .about-copy {
+        max-width: 700px;
+    }
+
+    .about-details {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-card {
+        min-height: 220px;
+    }
+
+    .detail-card h3 {
+        margin-top: 45px;
+    }
 }
 
-.about-details {
-    grid-template-columns: 1fr;
-}
-}
 
+/* =========================
+   MOBILE — PHONE
+========================= */
 
 @media (max-width: 650px) {
 
@@ -464,6 +551,29 @@ nav a:hover {
     nav {
         flex-wrap: wrap;
         justify-content: center;
+
+        gap: 12px 18px;
     }
 
+    .hero {
+        padding-top: 180px;
+    }
+
+    .hero-links {
+        align-items: stretch;
+    }
+
+    .hero-link {
+        text-align: center;
+    }
+
+    .content-section {
+        width: 90%;
+
+        padding: 85px 0;
+    }
+
+    .about-heading h2 {
+        font-size: 2.6rem;
+    }
 }
