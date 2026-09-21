@@ -4,22 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis Fernando Angulo</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="stylesheet" href="style.css?v=12">
+    <script src="script.js?v=12" defer></script>
 </head>
 <body>
-    <div class="site-grid"></div>
-
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
     <header class="navbar">
-        <div class="container nav-inner">
-            <a href="#top" class="brand">Luis Fernando Angulo</a>
+        <div class="nav-container">
+            <a href="#home" class="brand">Luis Fernando Angulo</a>
 
             <nav class="nav-links">
                 <a href="#about">About</a>
@@ -31,160 +22,47 @@
         </div>
     </header>
 
-    <main id="top">
-        <!-- =========================
-             HERO
-        ========================== -->
-        <section class="hero section">
+    <main>
+        <!-- HERO -->
+        <section class="hero section" id="home">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <p class="eyebrow">University of Arizona</p>
+                    <p class="section-label">UNIVERSITY OF ARIZONA</p>
 
-                    <h1 class="hero-title">Luis Fernando Angulo</h1>
+                    <h1 class="hero-title">
+                        Luis Fernando<br>
+                        Angulo
+                    </h1>
 
                     <h2 class="hero-subtitle">
                         Statistics, computation, and biology.
                     </h2>
 
                     <p class="hero-text">
-                        Statistics &amp; Data Science student and computational researcher interested in machine learning,
-                        scientific computing, computational biology, and biomedical data.
+                        Statistics &amp; Data Science student and computational researcher interested in
+                        machine learning, scientific computing, computational biology, and biomedical data.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="https://www.linkedin.com/in/luis-angulo-3329111b1/" target="_blank" class="button button-outline">LinkedIn</a>
-                        <a href="https://github.com/luisferangulob" target="_blank" class="button button-outline">GitHub</a>
-                        <a href="mailto:luisferangulob@gmail.com" class="button button-outline">Email</a>
-                        <a href="#research" class="button button-solid">Explore Research ↓</a>
+                        <a class="button button-outline" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="button button-outline" href="mailto:youremail@arizona.edu">Email</a>
+                        <a class="button button-solid" href="#research">Explore Research ↓</a>
                     </div>
                 </div>
 
                 <div class="hero-art">
                     <div class="animation-card">
                         <div class="animation-card-top">
-                            <span class="animation-label">Plants → brains → medicine</span>
-                            <span class="animation-status">concept animation</span>
+                            <span>PLANTS → BRAINS → MEDICINE</span>
+                            <span>CONCEPT ANIMATION</span>
                         </div>
 
-                        <div class="animation-frame">
-                            <svg id="heroAnimation" viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <!-- =========================
-                                     SCENE 1: SEED + ROOTS
-                                ========================== -->
-                                <g class="scene active" id="scene-root">
-                                    <circle class="seed-fill" cx="380" cy="88" r="26"></circle>
-                                    <circle class="seed-ring" cx="380" cy="88" r="34"></circle>
-
-                                    <path class="draw-on root-main" d="M380 114 C381 150 383 178 380 208 C377 244 373 278 376 326 C378 364 382 394 380 448"></path>
-
-                                    <path class="draw-on root-a" d="M376 168 C336 184 312 206 292 236 C278 258 268 282 250 304"></path>
-                                    <path class="draw-on root-a" d="M378 182 C336 206 324 230 314 258 C306 280 296 304 282 330"></path>
-                                    <path class="draw-on root-a" d="M379 204 C332 222 324 248 316 282 C310 306 300 328 288 354"></path>
-                                    <path class="draw-on root-a" d="M380 224 C338 246 334 276 330 312 C326 340 318 366 304 396"></path>
-
-                                    <path class="draw-on root-b" d="M384 166 C424 188 452 208 474 238 C492 262 504 284 520 306"></path>
-                                    <path class="draw-on root-b" d="M382 182 C430 206 442 228 452 256 C460 278 470 304 486 330"></path>
-                                    <path class="draw-on root-b" d="M381 202 C430 224 440 248 446 284 C452 312 464 334 480 356"></path>
-                                    <path class="draw-on root-b" d="M380 224 C420 246 426 278 430 314 C434 342 442 372 458 396"></path>
-
-                                    <path class="draw-on root-c" d="M374 244 C354 260 346 280 340 306 C334 328 326 354 318 384"></path>
-                                    <path class="draw-on root-c" d="M386 244 C404 260 412 282 418 308 C424 332 432 356 440 388"></path>
-
-                                    <path class="draw-on root-fine" d="M290 236 C282 248 274 264 262 278"></path>
-                                    <path class="draw-on root-fine" d="M314 258 C304 272 298 288 290 302"></path>
-                                    <path class="draw-on root-fine" d="M316 282 C302 296 296 312 290 328"></path>
-                                    <path class="draw-on root-fine" d="M330 312 C322 328 316 346 310 364"></path>
-                                    <path class="draw-on root-fine" d="M474 238 C486 252 494 268 506 280"></path>
-                                    <path class="draw-on root-fine" d="M452 256 C464 272 470 288 480 302"></path>
-                                    <path class="draw-on root-fine" d="M446 284 C458 300 468 316 478 330"></path>
-                                    <path class="draw-on root-fine" d="M430 314 C438 332 446 350 454 366"></path>
-
-                                    <text x="380" y="520" text-anchor="middle" class="scene-caption">Seed → root system</text>
-                                </g>
-
-                                <!-- =========================
-                                     SCENE 2: BRAIN
-                                ========================== -->
-                                <g class="scene" id="scene-brain">
-                                    <circle class="seed-fill small-seed" cx="188" cy="280" r="12"></circle>
-
-                                    <path class="draw-on brain-outline" d="M196 280
-                                        C210 220 262 184 334 182
-                                        C378 164 446 172 500 208
-                                        C550 240 572 294 558 340
-                                        C548 374 524 402 490 420
-                                        C458 438 424 444 392 438
-                                        C352 460 312 456 274 438
-                                        C236 420 208 390 196 354
-                                        C186 326 184 300 196 280 Z"></path>
-
-                                    <path class="draw-on brain-line" d="M236 282 C268 242 304 224 342 222"></path>
-                                    <path class="draw-on brain-line" d="M240 322 C276 284 318 266 364 264"></path>
-                                    <path class="draw-on brain-line" d="M244 362 C286 328 328 312 382 310"></path>
-                                    <path class="draw-on brain-line" d="M284 398 C318 372 358 354 408 352"></path>
-                                    <path class="draw-on brain-line" d="M334 414 C368 396 404 388 444 386"></path>
-
-                                    <path class="draw-on brain-line" d="M326 222 C356 232 378 250 388 278"></path>
-                                    <path class="draw-on brain-line" d="M360 262 C398 270 424 296 434 330"></path>
-                                    <path class="draw-on brain-line" d="M402 308 C438 314 470 338 488 372"></path>
-                                    <path class="draw-on brain-line" d="M268 246 C250 280 246 316 256 350"></path>
-                                    <path class="draw-on brain-line" d="M462 224 C500 248 516 286 512 332"></path>
-
-                                    <text x="380" y="520" text-anchor="middle" class="scene-caption">Roots rotate into a brain</text>
-                                </g>
-
-                                <!-- =========================
-                                     SCENE 3: ECG + HEART
-                                ========================== -->
-                                <g class="scene" id="scene-ecg">
-                                    <path class="draw-on ecg-line" d="
-                                        M90 290
-                                        L180 290
-                                        L230 290
-                                        L256 290
-                                        L278 290
-                                        L300 290
-                                        L322 290
-                                        L342 290
-                                        L358 250
-                                        L374 340
-                                        L392 206
-                                        L410 356
-                                        L434 290
-                                        L476 290
-                                        L512 290"></path>
-
-                                    <path class="draw-on heart-outline" d="
-                                        M520 290
-                                        C520 268 536 252 556 252
-                                        C570 252 582 260 590 272
-                                        C598 260 612 252 626 252
-                                        C646 252 662 268 662 290
-                                        C662 314 642 334 590 378
-                                        C540 336 520 314 520 290 Z"></path>
-
-                                    <path class="draw-on ecg-tail" d="M662 290 L706 290"></path>
-                                    <circle class="pulse-dot" cx="706" cy="290" r="5"></circle>
-
-                                    <text x="380" y="520" text-anchor="middle" class="scene-caption">Brain signals become clinical care</text>
-                                </g>
-
-                                <!-- =========================
-                                     SCENE 4: NEW ROOT
-                                ========================== -->
-                                <g class="scene" id="scene-rebirth">
-                                    <circle class="final-point" cx="380" cy="214" r="8"></circle>
-                                    <circle class="final-point-ring" cx="380" cy="214" r="18"></circle>
-                                    <path class="draw-on rebirth-root" d="M380 222 C380 246 380 270 380 300 C380 320 376 340 370 364"></path>
-                                    <path class="draw-on rebirth-root-branch" d="M378 294 C356 312 344 330 334 350"></path>
-                                    <path class="draw-on rebirth-root-branch" d="M382 294 C404 312 416 330 426 350"></path>
-
-                                    <text x="380" y="520" text-anchor="middle" class="scene-caption">Medicine grows from the work</text>
-                                </g>
-                            </svg>
+                        <div class="animation-stage">
+                            <canvas id="journeyCanvas"></canvas>
                         </div>
 
-                        <p class="animation-note">
+                        <p class="animation-description">
                             A looping concept piece inspired by your path: plant root architecture → brain-shaped structure → heart-monitor signal → medicine → growth again.
                         </p>
                     </div>
@@ -192,19 +70,18 @@
             </div>
         </section>
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
-        <section id="about" class="section about-section">
+        <!-- ABOUT -->
+        <section class="section" id="about">
             <div class="container">
-                <div class="section-kicker">01 / ABOUT</div>
+                <div class="section-header section-header-split">
+                    <div>
+                        <p class="section-number">01 / ABOUT</p>
+                        <h2 class="split-title">
+                            Statistics gives me the language. Computation gives me the tools.
+                        </h2>
+                    </div>
 
-                <div class="two-col-intro">
-                    <h2 class="section-title">
-                        Statistics gives me the language. Computation gives me the tools.
-                    </h2>
-
-                    <div class="section-copy">
+                    <div class="split-copy">
                         <p>
                             I am a senior at the University of Arizona studying <strong>Statistics &amp; Data Science</strong>,
                             with minors in <strong>Computer Science</strong> and <strong>Microbiology</strong>.
@@ -212,33 +89,33 @@
 
                         <p>
                             My work combines quantitative modeling, computation, and biology.
-                            I am interested in using statistical and computational methods to understand
-                            complex systems, with a focus on biomedical data, survival, disease, and biological structure.
+                            I am interested in using statistical and computational methods to understand complex systems,
+                            with a focus on biomedical data, survival, disease, and biological structure.
                         </p>
 
                         <p>
-                            I currently conduct computational research developing and analyzing stochastic
-                            three-dimensional models of plant root architecture while independently exploring
-                            applications of statistics and machine learning to biomedical questions.
+                            I currently conduct computational research developing and analyzing stochastic three-dimensional
+                            models of plant root architecture while independently exploring applications of statistics and
+                            machine learning to biomedical questions.
                         </p>
                     </div>
                 </div>
 
-                <div class="feature-grid three-up">
-                    <article class="feature-card">
-                        <span class="feature-number">01</span>
+                <div class="three-cards">
+                    <article class="info-card">
+                        <span class="mini-number">01</span>
                         <h3>Statistics</h3>
                         <p>Statistical modeling, machine learning, survival analysis, and quantitative inference.</p>
                     </article>
 
-                    <article class="feature-card">
-                        <span class="feature-number">02</span>
+                    <article class="info-card">
+                        <span class="mini-number">02</span>
                         <h3>Computation</h3>
                         <p>Scientific computing, simulation, high-performance computing, and data-intensive workflows.</p>
                     </article>
 
-                    <article class="feature-card">
-                        <span class="feature-number">03</span>
+                    <article class="info-card">
+                        <span class="mini-number">03</span>
                         <h3>Biology</h3>
                         <p>Computational biology, biomedical data, biological systems, and disease-focused research.</p>
                     </article>
@@ -246,45 +123,47 @@
             </div>
         </section>
 
-        <!-- =========================
-             RESEARCH
-        ========================== -->
-        <section id="research" class="section research-section">
+        <!-- RESEARCH -->
+        <section class="section" id="research">
             <div class="container">
-                <div class="section-kicker">02 / RESEARCH</div>
+                <div class="section-header section-header-split">
+                    <div>
+                        <p class="section-number">02 / RESEARCH</p>
+                        <h2 class="split-title">
+                            Modeling biological structure through computation.
+                        </h2>
+                    </div>
 
-                <div class="two-col-intro">
-                    <h2 class="section-title">
-                        Modeling biological structure through computation.
-                    </h2>
-
-                    <div class="section-copy">
+                    <div class="split-copy">
                         <p>
                             My current research focuses on computational models of three-dimensional root architecture
                             and the large-scale analysis of simulated biological structures.
                         </p>
 
                         <p>
-                            The project combines stochastic modeling, geometry, simulation, and high-performance computing
-                            to explore how local growth rules generate complex root systems.
+                            The project combines stochastic modeling, geometry, simulation, and high-performance
+                            computing to explore how local growth rules generate complex root systems.
                         </p>
                     </div>
                 </div>
 
-                <article class="showcase-card">
-                    <div class="showcase-media">
-                        <img src="App.gif" alt="3D root architecture simulation animation">
-                        <p class="media-caption">Stochastic three-dimensional root architecture generated by the simulation framework.</p>
+                <article class="feature-card">
+                    <div class="feature-media">
+                        <div class="media-placeholder">
+                            3D root architecture simulation animation<br>
+                            <span>Drop your GIF or image here later if you want.</span>
+                        </div>
+                        <p class="media-caption">
+                            Stochastic three-dimensional root architecture generated by the simulation framework.
+                        </p>
                     </div>
 
-                    <div class="showcase-content">
-                        <p class="card-label">Featured Research</p>
+                    <div class="feature-copy">
+                        <p class="feature-label">FEATURED RESEARCH</p>
                         <h3>3D Root Architecture Simulation</h3>
 
-                        <p class="org-line">
-                            <strong>Computational Plant Science Laboratory</strong>
-                            <span>•</span>
-                            <span>University of Arizona</span>
+                        <p class="feature-meta">
+                            <strong>Computational Plant Science Laboratory</strong> · University of Arizona
                         </p>
 
                         <p>
@@ -294,8 +173,8 @@
 
                         <p>
                             The simulator uses <em>local coordinate systems, quaternion-based transformations,
-                            branching, self-avoidance, and Monte Carlo simulation</em> to generate complex root
-                            geometries across thousands of parameter configurations.
+                            branching, self-avoidance, and Monte Carlo simulation</em> to generate complex root geometries
+                            across thousands of parameter configurations.
                         </p>
 
                         <p>
@@ -312,40 +191,42 @@
                         </div>
 
                         <div class="button-row">
-                            <a href="https://github.com/luisferangulob/3d-root-architecture-simulator" target="_blank" class="button button-outline">View Simulator ↗</a>
-                            <a href="https://github.com/luisferangulob/root-architecture-visualizer" target="_blank" class="button button-outline">View Visualizer ↗</a>
+                            <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Simulator ↗</a>
+                            <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Visualizer ↗</a>
                         </div>
                     </div>
                 </article>
 
-                <div class="stats-grid">
-                    <article class="stat-card">
-                        <h3>4.9M+</h3>
-                        <p class="stat-label">Monte Carlo Simulations</p>
-                        <p class="stat-detail">Large-scale simulation runs generated across the parameter space.</p>
+                <div class="three-cards metrics-grid">
+                    <article class="metric-card">
+                        <div class="metric-number">4.9M+</div>
+                        <h4>Monte Carlo Simulations</h4>
+                        <p>Large-scale simulation runs generated across the parameter space.</p>
                     </article>
 
-                    <article class="stat-card">
-                        <h3>24,503</h3>
-                        <p class="stat-label">Parameter Configurations</p>
-                        <p class="stat-detail">Distinct combinations used to explore changes in simulated root architecture.</p>
+                    <article class="metric-card">
+                        <div class="metric-number">24,503</div>
+                        <h4>Parameter Configurations</h4>
+                        <p>Distinct combinations used to explore changes in simulated root architecture.</p>
                     </article>
 
-                    <article class="stat-card">
-                        <h3>130+</h3>
-                        <p class="stat-label">Statistics per Simulation</p>
-                        <p class="stat-detail">Structural and geometric measurements calculated for each simulated root system.</p>
+                    <article class="metric-card">
+                        <div class="metric-number">130+</div>
+                        <h4>Statistics per Simulation</h4>
+                        <p>Structural and geometric measurements calculated for each simulated root system.</p>
                     </article>
                 </div>
 
-                <!-- Earlier Research -->
-                <div class="earlier-research">
-                    <div class="two-col-intro earlier-research-top">
-                        <h2 class="section-title">
-                            Computational chemistry before computational biology.
-                        </h2>
+                <div class="earlier-research-wrap">
+                    <div class="section-header section-header-split">
+                        <div>
+                            <p class="section-number">EARLIER RESEARCH</p>
+                            <h2 class="split-title">
+                                Computational chemistry before computational biology.
+                            </h2>
+                        </div>
 
-                        <div class="section-copy">
+                        <div class="split-copy">
                             <p>
                                 My earlier research introduced me to scientific computing through quantum chemistry,
                                 molecular dynamics, Linux-based workflows, and computational analysis of molecular systems.
@@ -353,56 +234,29 @@
                         </div>
                     </div>
 
-                    <article class="showcase-card oled-card">
-                        <div class="oled-visual">
-                            <div class="oled-visual-label">Multiscale Computation</div>
-
-                            <div class="oled-pipeline">
-                                <div class="oled-stage">
-                                    <span class="oled-stage-number">01</span>
-                                    <strong>Quantum</strong>
-                                    <small>Electronic structure</small>
-                                </div>
-
-                                <div class="oled-stage">
-                                    <span class="oled-stage-number">02</span>
-                                    <strong>Dynamics</strong>
-                                    <small>Molecular trajectories</small>
-                                </div>
-
-                                <div class="oled-stage">
-                                    <span class="oled-stage-number">03</span>
-                                    <strong>Analysis</strong>
-                                    <small>Python + comparison</small>
-                                </div>
+                    <article class="feature-card">
+                        <div class="feature-media">
+                            <div class="media-placeholder">
+                                MULTISCALE COMPUTATION<br>
+                                <span>OLED / macromolecular simulation visual can go here later.</span>
                             </div>
-
-                            <div class="atom-icon">
-                                <span class="atom-core"></span>
-                                <span class="orbit orbit-1"></span>
-                                <span class="orbit orbit-2"></span>
-                                <span class="orbit orbit-3"></span>
-                            </div>
-
-                            <p class="media-caption">Quantum calculations, molecular dynamics, and computational analysis combined in a multiscale OLED study.</p>
+                            <p class="media-caption">
+                                Quantum calculations, molecular dynamics, and computational analysis combined in a multiscale OLED study.
+                            </p>
                         </div>
 
-                        <div class="showcase-content">
-                            <p class="card-label">Computational Chemistry · Research Report</p>
+                        <div class="feature-copy">
+                            <p class="feature-label">COMPUTATIONAL CHEMISTRY · RESEARCH REPORT</p>
                             <h3>Multiscale Simulations of OLED Molecules</h3>
 
-                            <p class="org-line">
-                                <strong>Department of Chemistry &amp; Biochemistry</strong>
-                                <span>•</span>
-                                <span>University of Arizona</span>
+                            <p class="feature-meta">
+                                <strong>Department of Chemistry &amp; Biochemistry</strong> · University of Arizona
                             </p>
-
-                            <p class="authors-line">Luis Angulo <span>•</span> San Hershey <span>•</span> Equal contribution</p>
 
                             <p>
                                 I co-developed a multiscale computational study of
-                                <strong>3phCN-ICz, CzPA, and DOBNA</strong>, combining quantum calculations
-                                with molecular dynamics to investigate electronic structure and OLED-related molecular behavior.
+                                <strong>3phCN-ICz, CzPA, and DOBNA</strong>, combining quantum calculations with molecular
+                                dynamics to investigate electronic structure and OLED-related molecular behavior.
                             </p>
 
                             <p>
@@ -412,13 +266,14 @@
 
                             <p>
                                 We then used <em>GROMACS molecular dynamics</em> with the OPLSaa force field to study
-                                molecular behavior across 8,000 ps simulations, extracting structures at multiple time points
-                                for additional electronic-property calculations.
+                                molecular behavior across 8,000 ps simulations, extracting structures at multiple time
+                                points for additional electronic-property calculations.
                             </p>
 
                             <p>
-                                Python analysis connected molecular trajectories, energy profiles, temperature, and electronic properties across time.
-                                Under our approximations, molecular interactions produced relatively small changes in estimated color purity.
+                                Python analysis connected molecular trajectories, energy profiles, temperature, and
+                                electronic properties across time. Under our approximations, molecular interactions produced
+                                relatively small changes in estimated color purity.
                             </p>
 
                             <div class="tag-row">
@@ -433,77 +288,55 @@
                             </div>
 
                             <div class="button-row">
-                                <a href="oled-multiscale-simulations.pdf" target="_blank" class="button button-solid">View Research Report ↗</a>
+                                <a class="button button-solid" href="oled-multiscale-simulations.pdf" target="_blank" rel="noopener noreferrer">
+                                    View Research Report ↗
+                                </a>
                             </div>
                         </div>
                     </article>
-
-                    <div class="feature-grid three-up">
-                        <article class="feature-card">
-                            <span class="feature-number">01 / Quantum</span>
-                            <h3>Electronic Structure</h3>
-                            <p>Geometry optimization, frequency calculations, HOMO/LUMO estimation, and fundamental-gap analysis using Gaussian and density functional theory.</p>
-                        </article>
-
-                        <article class="feature-card">
-                            <span class="feature-number">02 / Dynamics</span>
-                            <h3>Molecular Simulation</h3>
-                            <p>NVT and NPT molecular dynamics simulations using GROMACS, periodic boundaries, and the OPLSaa force field.</p>
-                        </article>
-
-                        <article class="feature-card">
-                            <span class="feature-number">03 / Analysis</span>
-                            <h3>Scientific Computing</h3>
-                            <p>Linux and Slurm workflows with Python, pandas, NumPy, and Matplotlib for trajectory-derived quantitative analysis.</p>
-                        </article>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- =========================
-             PROJECTS
-        ========================== -->
-        <section id="projects" class="section projects-section">
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
             <div class="container">
-                <div class="section-kicker">03 / PROJECTS</div>
+                <div class="section-header section-header-split">
+                    <div>
+                        <p class="section-number">03 / PROJECTS</p>
+                        <h2 class="split-title">
+                            Turning computation into tools and analysis.
+                        </h2>
+                    </div>
 
-                <div class="two-col-intro">
-                    <h2 class="section-title">
-                        Turning computation into tools and analysis.
-                    </h2>
-
-                    <div class="section-copy">
+                    <div class="split-copy">
                         <p>
                             My projects extend research and coursework into interactive tools and independent statistical analyses.
                         </p>
 
                         <p>
-                            I use simulation, dimensionality reduction, visualization, and statistical modeling
-                            to make complex datasets easier to explore and interpret.
+                            I use simulation, dimensionality reduction, visualization, and statistical modeling to make complex datasets easier to explore and interpret.
                         </p>
                     </div>
                 </div>
 
                 <div class="project-stack">
-                    <article class="project-card project-card-large">
-                        <div class="project-header">
-                            <div>
-                                <p class="card-label">Interactive Scientific Application</p>
+                    <article class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-left">
+                                <p class="feature-label">INTERACTIVE SCIENTIFIC APPLICATION</p>
                                 <h3>Root Architecture Visualizer</h3>
-                            </div>
-                            <div class="project-number">01</div>
-                        </div>
-
-                        <div class="project-grid">
-                            <div class="project-image-panel">
-                                <img src="App.gif" alt="Root Architecture Visualizer app screenshot">
-                                <p class="media-caption">Interactive exploration of simulated root geometry, parameters, metrics, and statistical structure.</p>
+                                <div class="project-visual-placeholder">
+                                    Root visualizer app screenshot
+                                </div>
+                                <p class="media-caption">
+                                    Interactive exploration of simulated root geometry, parameters, metrics, and statistical structure.
+                                </p>
                             </div>
 
-                            <div class="project-copy-panel">
+                            <div class="project-right">
                                 <p class="project-lead">
-                                    An interactive analysis environment for <strong>exploring, comparing, and clustering simulated 3D root architectures.</strong>
+                                    An interactive analysis environment for <strong>exploring, comparing, and clustering simulated 3D root architectures</strong>.
                                 </p>
 
                                 <p>
@@ -517,8 +350,8 @@
                                 </p>
 
                                 <p>
-                                    Cluster exploration connects numerical structure back to geometry by loading
-                                    <em>real simulated roots nearest the PCA cluster centers</em>, rather than creating artificial centroid root structures.
+                                    Cluster exploration connects numerical structure back to geometry by loading <em>real simulated roots nearest the PCA cluster centers</em>,
+                                    rather than creating artificial centroid root structures.
                                 </p>
 
                                 <div class="tag-row">
@@ -531,53 +364,51 @@
                                 </div>
 
                                 <div class="button-row">
-                                    <a href="https://github.com/luisferangulob/root-architecture-visualizer" target="_blank" class="button button-outline">View Repository ↗</a>
+                                    <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mini-feature-grid">
-                            <div class="mini-feature">
-                                <span>01</span>
+                        <div class="project-subgrid">
+                            <div class="sub-card">
+                                <span class="mini-number">01</span>
                                 <h4>Explore</h4>
                                 <p>Inspect simulated 3D roots alongside their model parameters and calculated structural measurements.</p>
                             </div>
-                            <div class="mini-feature">
-                                <span>02</span>
+
+                            <div class="sub-card">
+                                <span class="mini-number">02</span>
                                 <h4>Compare</h4>
                                 <p>Use quantitative measurements and PCA to examine similarity across large collections of root architectures.</p>
                             </div>
-                            <div class="mini-feature">
-                                <span>03</span>
+
+                            <div class="sub-card">
+                                <span class="mini-number">03</span>
                                 <h4>Cluster</h4>
                                 <p>Examine architecture groups and load representative simulated roots nearest their numerical PCA cluster centers.</p>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card project-card-medium">
-                        <div class="project-header">
-                            <div>
-                                <p class="card-label">Biomedical Statistics</p>
+                    <article class="project-card compact-project">
+                        <div class="project-card-inner compact-layout">
+                            <div class="project-left">
+                                <p class="feature-label">BIOMEDICAL STATISTICS</p>
                                 <h3>Glioblastoma Survival Analysis</h3>
                             </div>
-                            <div class="project-number">02</div>
-                        </div>
 
-                        <div class="project-grid compact-project">
-                            <div class="project-copy-panel">
+                            <div class="project-right">
                                 <p class="project-lead">
                                     A patient-level analysis of clinical and survival data from <strong>The Cancer Genome Atlas</strong> for glioblastoma.
                                 </p>
 
                                 <p>
-                                    I cleaned and structured clinical records to examine survival time, censoring,
-                                    demographic characteristics, and variables relevant to biomedical prognosis.
+                                    I cleaned and structured clinical records to examine survival time, censoring, demographic characteristics,
+                                    and variables relevant to biomedical prognosis.
                                 </p>
 
                                 <p>
-                                    The project strengthened my interest in <em>survival analysis, biomedical statistics,
-                                    and computational approaches to disease data.</em>
+                                    The project strengthened my interest in <em>survival analysis, biomedical statistics, and computational approaches to disease data</em>.
                                 </p>
 
                                 <div class="tag-row">
@@ -589,109 +420,56 @@
                                     <span>TCGA</span>
                                 </div>
                             </div>
-
-                            <div class="survival-visual">
-                                <div class="survival-line"></div>
-                                <span class="survival-label">Survival</span>
-                                <h4>TCGA</h4>
-                                <p>Glioblastoma clinical data</p>
-                            </div>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- =========================
-             EXPERIENCE
-        ========================== -->
-        <section id="experience" class="section experience-section">
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
             <div class="container">
-                <div class="section-kicker">04 / EXPERIENCE</div>
-
-                <div class="two-col-intro">
-                    <h2 class="section-title">
-                        Research, analysis, and scientific communication.
-                    </h2>
-
-                    <div class="section-copy">
-                        <p>
-                            I have built experience through academic research and university-based analytical work.
-                        </p>
-
-                        <p>
-                            A full CV will be added here soon. For now, this section highlights the roles shaping my work.
-                        </p>
-                    </div>
+                <div class="section-header">
+                    <p class="section-number">04 / EXPERIENCE</p>
+                    <h2 class="standard-title">Experience section</h2>
+                    <p class="section-intro">
+                        This section can hold your CV-style experience once you finish crafting it.
+                        For now, we can keep it simple and expand later.
+                    </p>
                 </div>
 
-                <div class="timeline-grid">
-                    <article class="timeline-card">
-                        <p class="card-label">Current</p>
-                        <h3>Computational Plant Science Laboratory</h3>
-                        <p class="timeline-subtitle">Undergraduate Researcher · University of Arizona</p>
-                        <p>
-                            Developing stochastic models of 3D root architecture, running large Monte Carlo studies,
-                            analyzing simulation outputs, and building supporting computational tools.
-                        </p>
+                <div class="two-cards">
+                    <article class="info-card">
+                        <h3>Research</h3>
+                        <p>Computational Plant Science Laboratory, chemistry and biochemistry research, AI in healthcare, and future planetary-data work.</p>
                     </article>
 
-                    <article class="timeline-card">
-                        <p class="card-label">Current</p>
-                        <h3>Research Development Services</h3>
-                        <p class="timeline-subtitle">Student Worker · University of Arizona</p>
-                        <p>
-                            Supporting research communications, web content updates, reports, graphs, and campaign material
-                            for university research initiatives.
-                        </p>
-                    </article>
-
-                    <article class="timeline-card">
-                        <p class="card-label">Earlier</p>
-                        <h3>AI in Healthcare Simulation Education and Training</h3>
-                        <p class="timeline-subtitle">Vertically Integrated Project · University of Arizona</p>
-                        <p>
-                            Helped build interactive AI/ML virtual patients for medical training using programming,
-                            structured decision logic, and simulation-based design.
-                        </p>
-                    </article>
-
-                    <article class="timeline-card">
-                        <p class="card-label">Earlier</p>
-                        <h3>Chemistry &amp; Biochemistry Research</h3>
-                        <p class="timeline-subtitle">Undergraduate Research · University of Arizona</p>
-                        <p>
-                            Worked on computational chemistry workflows involving Gaussian, GROMACS, Linux, and scientific computing
-                            to study OLED-related molecules.
-                        </p>
+                    <article class="info-card">
+                        <h3>Professional</h3>
+                        <p>University of Arizona Research Development Services and other academic/professional work can be added here once your CV is ready.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- =========================
-             CONTACT
-        ========================== -->
-        <section id="contact" class="section contact-section">
+        <!-- CONTACT -->
+        <section class="section" id="contact">
             <div class="container">
-                <div class="contact-card">
-                    <p class="section-kicker">05 / CONTACT</p>
-                    <h2>Let’s connect.</h2>
-                    <p>
-                        If you want to reach out about research, graduate study, data science, or computational biology,
-                        feel free to contact me.
+                <div class="section-header">
+                    <p class="section-number">05 / CONTACT</p>
+                    <h2 class="standard-title">Let’s connect.</h2>
+                    <p class="section-intro">
+                        You can replace the placeholders below with your real links.
                     </p>
+                </div>
 
-                    <div class="hero-actions contact-actions">
-                        <a href="mailto:luisferangulob@gmail.com" class="button button-solid">Email Me</a>
-                        <a href="https://www.linkedin.com/in/luis-angulo-3329111b1/" target="_blank" class="button button-outline">LinkedIn</a>
-                        <a href="https://github.com/luisferangulob" target="_blank" class="button button-outline">GitHub</a>
-                    </div>
+                <div class="contact-row">
+                    <a class="button button-outline" href="mailto:youremail@arizona.edu">Email</a>
+                    <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="button button-outline" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
             </div>
         </section>
     </main>
-
-    <script src="script.js?v=20"></script>
 </body>
 </html>
