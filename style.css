@@ -230,7 +230,7 @@ nav a:hover {
 
 
 /* =========================
-   HERO ART PLACEHOLDER
+   HERO ART
 ========================= */
 
 .hero-art {
@@ -246,7 +246,6 @@ nav a:hover {
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
@@ -264,7 +263,6 @@ nav a:hover {
     color: #58a6ff;
 
     font-family: monospace;
-
     font-size: 0.8rem;
     font-weight: 700;
 
@@ -275,11 +273,12 @@ nav a:hover {
     width: 1px;
     height: 65px;
 
-    background: linear-gradient(
-        transparent,
-        #58a6ff,
-        transparent
-    );
+    background:
+        linear-gradient(
+            transparent,
+            #58a6ff,
+            transparent
+        );
 }
 
 
@@ -305,7 +304,6 @@ nav a:hover {
     color: #58a6ff;
 
     font-family: monospace;
-
     font-size: 0.82rem;
     font-weight: 700;
 
@@ -338,7 +336,6 @@ nav a:hover {
     font-size: clamp(2.5rem, 4vw, 4.4rem);
 
     line-height: 1.05;
-
     letter-spacing: -0.045em;
 }
 
@@ -361,7 +358,6 @@ nav a:hover {
 
 .about-copy strong {
     color: #f0f6fc;
-
     font-weight: 600;
 }
 
@@ -409,18 +405,18 @@ nav a:hover {
     content: "";
 
     position: absolute;
-
     top: 0;
     left: 0;
 
     width: 100%;
     height: 2px;
 
-    background: linear-gradient(
-        90deg,
-        #58a6ff,
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #58a6ff,
+            transparent
+        );
 
     opacity: 0.65;
 }
@@ -430,13 +426,6 @@ nav a:hover {
 
     border-color: rgba(88, 166, 255, 0.55);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(26, 34, 44, 0.96),
-            rgba(13, 17, 23, 0.90)
-        );
-
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.22);
 }
@@ -445,7 +434,6 @@ nav a:hover {
     color: #58a6ff;
 
     font-family: monospace;
-
     font-size: 0.78rem;
     font-weight: 700;
 
@@ -455,11 +443,7 @@ nav a:hover {
 .detail-card h3 {
     margin: 65px 0 14px;
 
-    color: #f0f6fc;
-
     font-size: 1.55rem;
-
-    letter-spacing: -0.02em;
 }
 
 .detail-card p {
@@ -494,12 +478,9 @@ nav a:hover {
 
     max-width: 560px;
 
-    color: #f0f6fc;
-
     font-size: clamp(2.6rem, 4vw, 4.5rem);
 
     line-height: 1.04;
-
     letter-spacing: -0.045em;
 }
 
@@ -518,7 +499,6 @@ nav a:hover {
 
 .research-intro-copy p:first-child {
     color: #c9d1d9;
-
     font-size: 1.16rem;
 }
 
@@ -554,15 +534,9 @@ nav a:hover {
         0 30px 80px rgba(0, 0, 0, 0.24);
 }
 
-
-/* =========================
-   RESEARCH MEDIA
-========================= */
-
 .research-media {
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 
     min-width: 0;
@@ -598,15 +572,9 @@ nav a:hover {
     line-height: 1.55;
 }
 
-
-/* =========================
-   RESEARCH CONTENT
-========================= */
-
 .research-content {
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 
     padding: 14px 10px;
@@ -629,12 +597,9 @@ nav a:hover {
 .research-content h3 {
     margin: 0;
 
-    color: #f0f6fc;
-
     font-size: clamp(2.2rem, 3.2vw, 3.4rem);
 
     line-height: 1.02;
-
     letter-spacing: -0.04em;
 }
 
@@ -644,14 +609,11 @@ nav a:hover {
     color: #8b949e;
 
     font-size: 0.94rem;
-
     line-height: 1.6;
 }
 
 .research-lab strong {
     color: #c9d1d9;
-
-    font-weight: 650;
 }
 
 .research-lab span {
@@ -660,11 +622,6 @@ nav a:hover {
     margin: 0 5px;
 }
 
-
-/* =========================
-   RESEARCH TYPOGRAPHY
-========================= */
-
 .research-lead {
     margin: 34px 0 0;
 
@@ -672,14 +629,10 @@ nav a:hover {
 
     font-size: 1.24rem;
     line-height: 1.75;
-
-    letter-spacing: -0.01em;
 }
 
 .research-lead strong {
     color: #58a6ff;
-
-    font-weight: 700;
 }
 
 .research-detail {
@@ -699,12 +652,8 @@ nav a:hover {
     font-size: 1.02rem;
 }
 
-
-/* =========================
-   RESEARCH TAGS
-========================= */
-
-.research-tags {
+.research-tags,
+.project-tags {
     display: flex;
     flex-wrap: wrap;
 
@@ -713,7 +662,8 @@ nav a:hover {
     margin-top: 30px;
 }
 
-.research-tags span {
+.research-tags span,
+.project-tags span {
     padding: 8px 12px;
 
     color: #c9d1d9;
@@ -729,11 +679,6 @@ nav a:hover {
     background: rgba(88, 166, 255, 0.07);
 }
 
-
-/* =========================
-   RESEARCH LINKS
-========================= */
-
 .research-links {
     display: flex;
     flex-wrap: wrap;
@@ -743,9 +688,11 @@ nav a:hover {
     margin-top: 32px;
 }
 
-.research-links a {
+.research-links a,
+.project-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     padding: 11px 16px;
 
@@ -767,18 +714,14 @@ nav a:hover {
         background 0.2s ease;
 }
 
-.research-links a:hover {
+.research-links a:hover,
+.project-button:hover {
     transform: translateY(-2px);
 
     border-color: #58a6ff;
 
     background: rgba(88, 166, 255, 0.14);
 }
-
-
-/* =========================
-   RESEARCH METRICS
-========================= */
 
 .research-metrics {
     display: grid;
@@ -806,24 +749,6 @@ nav a:hover {
             rgba(22, 27, 34, 0.84),
             rgba(13, 17, 23, 0.76)
         );
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-}
-
-.metric-card:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(88, 166, 255, 0.50);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25, 33, 43, 0.94),
-            rgba(13, 17, 23, 0.84)
-        );
 }
 
 .metric-value {
@@ -840,12 +765,8 @@ nav a:hover {
 .metric-label {
     margin-top: 16px;
 
-    color: #f0f6fc;
-
     font-size: 1rem;
     font-weight: 700;
-
-    line-height: 1.35;
 }
 
 .metric-card p {
@@ -864,6 +785,8 @@ nav a:hover {
 
 .projects-section {
     min-height: auto;
+
+    display: block;
 }
 
 .projects-intro {
@@ -880,12 +803,9 @@ nav a:hover {
 
     max-width: 570px;
 
-    color: #f0f6fc;
-
     font-size: clamp(2.6rem, 4vw, 4.5rem);
 
     line-height: 1.04;
-
     letter-spacing: -0.045em;
 }
 
@@ -908,10 +828,6 @@ nav a:hover {
     font-size: 1.16rem;
 }
 
-.projects-intro-copy p:last-child {
-    margin-bottom: 0;
-}
-
 
 /* =========================
    PROJECT BASE
@@ -919,6 +835,8 @@ nav a:hover {
 
 .project {
     position: relative;
+
+    display: block;
 
     margin-top: 80px;
 
@@ -944,7 +862,7 @@ nav a:hover {
     top: 28px;
     right: 32px;
 
-    color: rgba(88, 166, 255, 0.35);
+    color: rgba(88, 166, 255, 0.28);
 
     font-family: monospace;
 
@@ -983,12 +901,9 @@ nav a:hover {
 .secondary-project-title h3 {
     margin: 0;
 
-    color: #f0f6fc;
-
     font-size: clamp(2.3rem, 4vw, 4rem);
 
     line-height: 1;
-
     letter-spacing: -0.045em;
 }
 
@@ -1012,19 +927,6 @@ nav a:hover {
     border-radius: 50%;
 
     background: rgba(88, 166, 255, 0.06);
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.project-arrow:hover {
-    transform: translateY(-3px);
-
-    border-color: #58a6ff;
-
-    background: rgba(88, 166, 255, 0.14);
 }
 
 
@@ -1077,7 +979,6 @@ nav a:hover {
 .project-copy {
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 }
 
@@ -1091,11 +992,6 @@ nav a:hover {
     line-height: 1.82;
 }
 
-.project-copy > p:last-of-type,
-.secondary-project-content > p:last-of-type {
-    margin-bottom: 0;
-}
-
 .project-lead {
     color: #e6edf3 !important;
 
@@ -1106,8 +1002,6 @@ nav a:hover {
 
 .project-lead strong {
     color: #58a6ff;
-
-    font-weight: 700;
 }
 
 .project-copy strong,
@@ -1122,66 +1016,10 @@ nav a:hover {
     font-family: Georgia, "Times New Roman", serif;
 }
 
-
-/* =========================
-   PROJECT TAGS
-========================= */
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 9px;
-
-    margin-top: 28px;
-}
-
-.project-tags span {
-    padding: 8px 12px;
-
-    color: #c9d1d9;
-
-    font-family: monospace;
-
-    font-size: 0.72rem;
-    font-weight: 600;
-
-    border: 1px solid rgba(88, 166, 255, 0.20);
-    border-radius: 999px;
-
-    background: rgba(88, 166, 255, 0.07);
-}
-
 .project-button {
     align-self: flex-start;
 
     margin-top: 30px;
-    padding: 11px 17px;
-
-    color: #f0f6fc;
-
-    font-size: 0.9rem;
-    font-weight: 650;
-
-    text-decoration: none;
-
-    border: 1px solid rgba(88, 166, 255, 0.30);
-    border-radius: 9px;
-
-    background: rgba(88, 166, 255, 0.06);
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.project-button:hover {
-    transform: translateY(-2px);
-
-    border-color: #58a6ff;
-
-    background: rgba(88, 166, 255, 0.14);
 }
 
 
@@ -1213,14 +1051,10 @@ nav a:hover {
 
     font-size: 0.75rem;
     font-weight: 700;
-
-    letter-spacing: 0.1em;
 }
 
 .capability h4 {
     margin: 42px 0 13px;
-
-    color: #f0f6fc;
 
     font-size: 1.35rem;
 }
@@ -1252,14 +1086,6 @@ nav a:hover {
     align-items: center;
 }
 
-.secondary-project-title {
-    min-width: 0;
-}
-
-.secondary-project-content {
-    min-width: 0;
-}
-
 
 /* =========================
    GBM VISUAL
@@ -1272,7 +1098,6 @@ nav a:hover {
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 
     padding: 28px;
@@ -1292,36 +1117,15 @@ nav a:hover {
 }
 
 .gbm-line {
-    position: relative;
-
     width: 100%;
     height: 2px;
-
-    margin-bottom: 24px;
 
     background: #58a6ff;
 }
 
-.gbm-line::before {
-    content: "";
-
-    position: absolute;
-
-    left: 42%;
-    bottom: 0;
-
-    width: 34px;
-    height: 62px;
-
-    border-left: 2px solid #58a6ff;
-    border-bottom: 2px solid #58a6ff;
-
-    transform:
-        rotate(45deg)
-        skew(-12deg);
-}
-
 .gbm-label {
+    margin-top: 24px;
+
     color: #58a6ff;
 
     font-family: monospace;
@@ -1342,8 +1146,6 @@ nav a:hover {
 }
 
 .gbm-stat strong {
-    color: #f0f6fc;
-
     font-family: monospace;
 
     font-size: 2.4rem;
@@ -1358,7 +1160,7 @@ nav a:hover {
 
 
 /* =========================
-   MOBILE — TABLET
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -1375,7 +1177,6 @@ nav a:hover {
         font-size: 0.78rem;
     }
 
-
     .hero {
         width: 90%;
 
@@ -1386,15 +1187,6 @@ nav a:hover {
         padding-top: 140px;
     }
 
-    .hero h1 {
-        font-size: clamp(3.6rem, 14vw, 6rem);
-    }
-
-    .hero-art {
-        padding-bottom: 50px;
-    }
-
-
     .about-grid,
     .research-intro,
     .projects-intro {
@@ -1403,61 +1195,14 @@ nav a:hover {
         gap: 40px;
     }
 
-    .about-heading h2,
-    .research-heading h2,
-    .projects-heading h2 {
-        max-width: 700px;
-    }
-
-    .about-copy,
-    .research-intro-copy,
-    .projects-intro-copy {
-        max-width: 700px;
-    }
-
-
-    .about-details {
-        grid-template-columns: 1fr;
-    }
-
-    .detail-card {
-        min-height: 220px;
-    }
-
-    .detail-card h3 {
-        margin-top: 45px;
-    }
-
-
-    .featured-research {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-    }
-
-    .research-media {
-        max-width: 600px;
-
-        margin: auto;
-    }
-
+    .about-details,
     .research-metrics {
         grid-template-columns: 1fr;
     }
 
-    .metric-card {
-        min-height: 180px;
-    }
-
-
+    .featured-research,
     .project-feature-grid {
         grid-template-columns: 1fr;
-    }
-
-    .project-visual {
-        max-width: 760px;
-
-        margin: auto;
     }
 
     .project-capabilities {
@@ -1466,21 +1211,18 @@ nav a:hover {
 
     .capability + .capability {
         border-left: 0;
+
         border-top: 1px solid rgba(88, 166, 255, 0.15);
     }
 
     .secondary-project-grid {
         grid-template-columns: 1fr;
     }
-
-    .gbm-visual {
-        max-width: 500px;
-    }
 }
 
 
 /* =========================
-   MOBILE — PHONE
+   PHONE
 ========================= */
 
 @media (max-width: 650px) {
@@ -1498,19 +1240,9 @@ nav a:hover {
         gap: 12px 18px;
     }
 
-
     .hero {
         padding-top: 180px;
     }
-
-    .hero-links {
-        align-items: stretch;
-    }
-
-    .hero-link {
-        text-align: center;
-    }
-
 
     .content-section {
         width: 90%;
@@ -1518,66 +1250,30 @@ nav a:hover {
         padding: 85px 0;
     }
 
-
     .about-heading h2,
     .research-heading h2,
     .projects-heading h2 {
         font-size: 2.6rem;
     }
 
-
     .featured-research {
         padding: 18px;
     }
 
-    .research-content {
-        padding: 6px 2px;
-    }
-
-    .research-lead {
-        font-size: 1.12rem;
-    }
-
-    .research-links {
-        flex-direction: column;
-    }
-
-    .research-links a {
-        justify-content: center;
-    }
-
-
     .project-header {
-        padding:
-            30px
-            24px
-            24px;
+        padding: 30px 24px 24px;
+    }
+
+    .project-feature-grid {
+        padding: 0 24px 28px;
     }
 
     .project-number {
-        top: 22px;
-        right: 24px;
-
         font-size: 2.8rem;
     }
 
     .project-arrow {
         display: none;
-    }
-
-    .project-feature-grid {
-        padding:
-            0
-            24px
-            28px;
-    }
-
-    .project-capabilities {
-        margin-top: 0;
-    }
-
-    .capability {
-        padding: 26px 24px;
     }
 
     .project-secondary {
@@ -1586,9 +1282,5 @@ nav a:hover {
 
     .project-button {
         width: 100%;
-
-        justify-content: center;
-
-        text-align: center;
     }
 }
