@@ -1,475 +1,1052 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Fernando Angulo</title>
-    <link rel="stylesheet" href="style.css?v=12">
-    <script src="script.js?v=12" defer></script>
-</head>
-<body>
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="brand">Luis Fernando Angulo</a>
 
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#projects">Projects</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+    <title>Luis Fernando Angulo</title>
+
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            Luis Fernando Angulo
+        </a>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
     </header>
 
+
     <main>
-        <!-- HERO -->
-        <section class="hero section" id="home">
-            <div class="container hero-grid">
-                <div class="hero-copy">
-                    <p class="section-label">UNIVERSITY OF ARIZONA</p>
 
-                    <h1 class="hero-title">
-                        Luis Fernando<br>
-                        Angulo
-                    </h1>
+        <!-- =========================
+             HERO
+        ========================== -->
 
-                    <h2 class="hero-subtitle">
-                        Statistics, computation, and biology.
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    University of Arizona
+                </p>
+
+                <h1>
+                    Luis Fernando Angulo
+                </h1>
+
+                <h2>
+                    Statistics, computation, and biology.
+                </h2>
+
+                <p class="hero-description">
+                    Statistics & Data Science student and computational researcher
+                    interested in machine learning, scientific computing,
+                    computational biology, and biomedical data.
+                </p>
+
+                <div class="hero-links">
+
+                    <a
+                        href="https://www.linkedin.com/in/luis-angulo-3329111b1/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hero-link"
+                    >
+                        LinkedIn
+                    </a>
+
+                    <a
+                        href="https://github.com/luisferangulob"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hero-link"
+                    >
+                        GitHub
+                    </a>
+
+                    <a
+                        href="mailto:luisferangulob@gmail.com"
+                        class="hero-link"
+                    >
+                        Email
+                    </a>
+
+                    <a
+                        href="#research"
+                        class="hero-link primary-link"
+                    >
+                        Explore Research ↓
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Future custom animation -->
+            <div class="hero-art">
+
+                <div class="animation-placeholder">
+
+                    <span>ROOT</span>
+
+                    <div class="placeholder-line"></div>
+
+                    <span>DATA</span>
+
+                    <div class="placeholder-line"></div>
+
+                    <span>BIOLOGY</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about" class="content-section about-section">
+
+            <p class="section-label">
+                01 / ABOUT
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-heading">
+
+                    <h2>
+                        Statistics gives me the language.
+                        Computation gives me the tools.
                     </h2>
 
-                    <p class="hero-text">
-                        Statistics &amp; Data Science student and computational researcher interested in
-                        machine learning, scientific computing, computational biology, and biomedical data.
+                </div>
+
+                <div class="about-copy">
+
+                    <p>
+                        I am a senior at the University of Arizona studying
+                        <strong>Statistics & Data Science</strong>, with minors in
+                        <strong>Computer Science</strong> and
+                        <strong>Microbiology</strong>.
                     </p>
 
-                    <div class="hero-actions">
-                        <a class="button button-outline" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a class="button button-outline" href="mailto:youremail@arizona.edu">Email</a>
-                        <a class="button button-solid" href="#research">Explore Research ↓</a>
-                    </div>
+                    <p>
+                        My work combines quantitative modeling, computation,
+                        and biology. I am interested in using statistical and
+                        computational methods to understand complex systems,
+                        with a focus on biomedical data, survival, disease,
+                        and biological structure.
+                    </p>
+
+                    <p>
+                        I currently conduct computational research developing
+                        and analyzing stochastic three-dimensional models of
+                        plant root architecture while independently exploring
+                        applications of statistics and machine learning to
+                        biomedical questions.
+                    </p>
+
                 </div>
 
-                <div class="hero-art">
-                    <div class="animation-card">
-                        <div class="animation-card-top">
-                            <span>PLANTS → BRAINS → MEDICINE</span>
-                            <span>CONCEPT ANIMATION</span>
-                        </div>
-
-                        <div class="animation-stage">
-                            <canvas id="journeyCanvas"></canvas>
-                        </div>
-
-                        <p class="animation-description">
-                            A looping concept piece inspired by your path: plant root architecture → brain-shaped structure → heart-monitor signal → medicine → growth again.
-                        </p>
-                    </div>
-                </div>
             </div>
-        </section>
 
-        <!-- ABOUT -->
-        <section class="section" id="about">
-            <div class="container">
-                <div class="section-header section-header-split">
-                    <div>
-                        <p class="section-number">01 / ABOUT</p>
-                        <h2 class="split-title">
-                            Statistics gives me the language. Computation gives me the tools.
-                        </h2>
-                    </div>
 
-                    <div class="split-copy">
-                        <p>
-                            I am a senior at the University of Arizona studying <strong>Statistics &amp; Data Science</strong>,
-                            with minors in <strong>Computer Science</strong> and <strong>Microbiology</strong>.
-                        </p>
+            <div class="about-details">
 
-                        <p>
-                            My work combines quantitative modeling, computation, and biology.
-                            I am interested in using statistical and computational methods to understand complex systems,
-                            with a focus on biomedical data, survival, disease, and biological structure.
-                        </p>
+                <article class="detail-card">
 
-                        <p>
-                            I currently conduct computational research developing and analyzing stochastic three-dimensional
-                            models of plant root architecture while independently exploring applications of statistics and
-                            machine learning to biomedical questions.
-                        </p>
-                    </div>
-                </div>
+                    <span class="detail-number">
+                        01
+                    </span>
 
-                <div class="three-cards">
-                    <article class="info-card">
-                        <span class="mini-number">01</span>
-                        <h3>Statistics</h3>
-                        <p>Statistical modeling, machine learning, survival analysis, and quantitative inference.</p>
-                    </article>
+                    <h3>
+                        Statistics
+                    </h3>
 
-                    <article class="info-card">
-                        <span class="mini-number">02</span>
-                        <h3>Computation</h3>
-                        <p>Scientific computing, simulation, high-performance computing, and data-intensive workflows.</p>
-                    </article>
+                    <p>
+                        Statistical modeling, machine learning,
+                        survival analysis, and quantitative inference.
+                    </p>
 
-                    <article class="info-card">
-                        <span class="mini-number">03</span>
-                        <h3>Biology</h3>
-                        <p>Computational biology, biomedical data, biological systems, and disease-focused research.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESEARCH -->
-        <section class="section" id="research">
-            <div class="container">
-                <div class="section-header section-header-split">
-                    <div>
-                        <p class="section-number">02 / RESEARCH</p>
-                        <h2 class="split-title">
-                            Modeling biological structure through computation.
-                        </h2>
-                    </div>
-
-                    <div class="split-copy">
-                        <p>
-                            My current research focuses on computational models of three-dimensional root architecture
-                            and the large-scale analysis of simulated biological structures.
-                        </p>
-
-                        <p>
-                            The project combines stochastic modeling, geometry, simulation, and high-performance
-                            computing to explore how local growth rules generate complex root systems.
-                        </p>
-                    </div>
-                </div>
-
-                <article class="feature-card">
-                    <div class="feature-media">
-                        <div class="media-placeholder">
-                            3D root architecture simulation animation<br>
-                            <span>Drop your GIF or image here later if you want.</span>
-                        </div>
-                        <p class="media-caption">
-                            Stochastic three-dimensional root architecture generated by the simulation framework.
-                        </p>
-                    </div>
-
-                    <div class="feature-copy">
-                        <p class="feature-label">FEATURED RESEARCH</p>
-                        <h3>3D Root Architecture Simulation</h3>
-
-                        <p class="feature-meta">
-                            <strong>Computational Plant Science Laboratory</strong> · University of Arizona
-                        </p>
-
-                        <p>
-                            I develop a <strong>stochastic computational framework</strong> for generating and analyzing
-                            three-dimensional root systems from local growth rules.
-                        </p>
-
-                        <p>
-                            The simulator uses <em>local coordinate systems, quaternion-based transformations,
-                            branching, self-avoidance, and Monte Carlo simulation</em> to generate complex root geometries
-                            across thousands of parameter configurations.
-                        </p>
-
-                        <p>
-                            The resulting structures are summarized through more than one hundred quantitative measurements,
-                            creating a large-scale dataset for studying how model parameters influence root architecture.
-                        </p>
-
-                        <div class="tag-row">
-                            <span>Python</span>
-                            <span>NumPy</span>
-                            <span>Monte Carlo</span>
-                            <span>HPC</span>
-                            <span>Scientific Computing</span>
-                        </div>
-
-                        <div class="button-row">
-                            <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Simulator ↗</a>
-                            <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Visualizer ↗</a>
-                        </div>
-                    </div>
                 </article>
 
-                <div class="three-cards metrics-grid">
-                    <article class="metric-card">
-                        <div class="metric-number">4.9M+</div>
-                        <h4>Monte Carlo Simulations</h4>
-                        <p>Large-scale simulation runs generated across the parameter space.</p>
-                    </article>
 
-                    <article class="metric-card">
-                        <div class="metric-number">24,503</div>
-                        <h4>Parameter Configurations</h4>
-                        <p>Distinct combinations used to explore changes in simulated root architecture.</p>
-                    </article>
+                <article class="detail-card">
 
-                    <article class="metric-card">
-                        <div class="metric-number">130+</div>
-                        <h4>Statistics per Simulation</h4>
-                        <p>Structural and geometric measurements calculated for each simulated root system.</p>
-                    </article>
-                </div>
+                    <span class="detail-number">
+                        02
+                    </span>
 
-                <div class="earlier-research-wrap">
-                    <div class="section-header section-header-split">
-                        <div>
-                            <p class="section-number">EARLIER RESEARCH</p>
-                            <h2 class="split-title">
-                                Computational chemistry before computational biology.
-                            </h2>
-                        </div>
+                    <h3>
+                        Computation
+                    </h3>
 
-                        <div class="split-copy">
-                            <p>
-                                My earlier research introduced me to scientific computing through quantum chemistry,
-                                molecular dynamics, Linux-based workflows, and computational analysis of molecular systems.
-                            </p>
-                        </div>
-                    </div>
+                    <p>
+                        Scientific computing, simulation,
+                        high-performance computing, and
+                        data-intensive workflows.
+                    </p>
 
-                    <article class="feature-card">
-                        <div class="feature-media">
-                            <div class="media-placeholder">
-                                MULTISCALE COMPUTATION<br>
-                                <span>OLED / macromolecular simulation visual can go here later.</span>
-                            </div>
-                            <p class="media-caption">
-                                Quantum calculations, molecular dynamics, and computational analysis combined in a multiscale OLED study.
-                            </p>
-                        </div>
+                </article>
 
-                        <div class="feature-copy">
-                            <p class="feature-label">COMPUTATIONAL CHEMISTRY · RESEARCH REPORT</p>
-                            <h3>Multiscale Simulations of OLED Molecules</h3>
 
-                            <p class="feature-meta">
-                                <strong>Department of Chemistry &amp; Biochemistry</strong> · University of Arizona
-                            </p>
+                <article class="detail-card">
 
-                            <p>
-                                I co-developed a multiscale computational study of
-                                <strong>3phCN-ICz, CzPA, and DOBNA</strong>, combining quantum calculations with molecular
-                                dynamics to investigate electronic structure and OLED-related molecular behavior.
-                            </p>
+                    <span class="detail-number">
+                        03
+                    </span>
 
-                            <p>
-                                Using <em>Gaussian with B3LYP/6-31G(d,p)</em>, we calculated HOMO, LUMO, and
-                                fundamental-gap values and compared computational estimates with values reported in the literature.
-                            </p>
+                    <h3>
+                        Biology
+                    </h3>
 
-                            <p>
-                                We then used <em>GROMACS molecular dynamics</em> with the OPLSaa force field to study
-                                molecular behavior across 8,000 ps simulations, extracting structures at multiple time
-                                points for additional electronic-property calculations.
-                            </p>
+                    <p>
+                        Computational biology, biomedical data,
+                        biological systems, and disease-focused research.
+                    </p>
 
-                            <p>
-                                Python analysis connected molecular trajectories, energy profiles, temperature, and
-                                electronic properties across time. Under our approximations, molecular interactions produced
-                                relatively small changes in estimated color purity.
-                            </p>
+                </article>
 
-                            <div class="tag-row">
-                                <span>Gaussian</span>
-                                <span>GROMACS</span>
-                                <span>Slurm</span>
-                                <span>Python</span>
-                                <span>NumPy</span>
-                                <span>pandas</span>
-                                <span>DFT</span>
-                                <span>Molecular Dynamics</span>
-                            </div>
-
-                            <div class="button-row">
-                                <a class="button button-solid" href="oled-multiscale-simulations.pdf" target="_blank" rel="noopener noreferrer">
-                                    View Research Report ↗
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
             </div>
+
         </section>
 
-        <!-- PROJECTS -->
-        <section class="section" id="projects">
-            <div class="container">
-                <div class="section-header section-header-split">
+
+        <!-- =========================
+             RESEARCH
+        ========================== -->
+
+        <section id="research" class="content-section research-section">
+
+            <p class="section-label">
+                02 / RESEARCH
+            </p>
+
+
+            <div class="research-intro">
+
+                <div class="research-heading">
+
+                    <h2>
+                        Modeling biological structure
+                        through computation.
+                    </h2>
+
+                </div>
+
+
+                <div class="research-intro-copy">
+
+                    <p>
+                        My current research focuses on computational models of
+                        three-dimensional root architecture and the large-scale
+                        analysis of simulated biological structures.
+                    </p>
+
+                    <p>
+                        The project combines stochastic modeling, geometry,
+                        simulation, and high-performance computing to explore
+                        how local growth rules generate complex root systems.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CURRENT RESEARCH
+            ========================== -->
+
+            <article class="featured-research">
+
+                <div class="research-media">
+
+                    <img
+                        src="https://raw.githubusercontent.com/luisferangulob/luisferangulob/main/Gif_github.gif"
+                        alt="Animated three-dimensional root architecture simulation"
+                    >
+
+                    <p class="media-caption">
+                        Stochastic three-dimensional root architecture generated
+                        by the simulation framework.
+                    </p>
+
+                </div>
+
+
+                <div class="research-content">
+
+                    <p class="research-kicker">
+                        Featured Research
+                    </p>
+
+                    <h3>
+                        3D Root Architecture Simulation
+                    </h3>
+
+                    <p class="research-lab">
+                        <strong>Computational Plant Science Laboratory</strong>
+                        <span>·</span>
+                        University of Arizona
+                    </p>
+
+                    <p class="research-lead">
+                        I develop a <strong>stochastic computational framework</strong>
+                        for generating and analyzing three-dimensional root systems
+                        from local growth rules.
+                    </p>
+
+                    <p class="research-detail">
+                        The simulator uses
+                        <em>local coordinate systems, quaternion-based transformations,
+                        branching, self-avoidance, and Monte Carlo simulation</em>
+                        to generate complex root geometries across thousands of
+                        parameter configurations.
+                    </p>
+
+                    <p class="research-detail">
+                        The resulting structures are summarized through more than
+                        one hundred quantitative measurements, creating a large-scale
+                        dataset for studying how model parameters influence root
+                        architecture.
+                    </p>
+
+
+                    <div class="research-tags">
+
+                        <span>Python</span>
+                        <span>NumPy</span>
+                        <span>Monte Carlo</span>
+                        <span>HPC</span>
+                        <span>Scientific Computing</span>
+
+                    </div>
+
+
+                    <div class="research-links">
+
+                        <a
+                            href="https://github.com/luisferangulob/3d-root-architecture-simulator"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Simulator ↗
+                        </a>
+
+                        <a
+                            href="https://github.com/luisferangulob/root-architecture-visualizer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Visualizer ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <div class="research-metrics">
+
+                <article class="metric-card">
+
+                    <span class="metric-value">
+                        4.9M+
+                    </span>
+
+                    <span class="metric-label">
+                        Monte Carlo Simulations
+                    </span>
+
+                    <p>
+                        Large-scale simulation runs generated across the
+                        parameter space.
+                    </p>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-value">
+                        24,503
+                    </span>
+
+                    <span class="metric-label">
+                        Parameter Configurations
+                    </span>
+
+                    <p>
+                        Distinct combinations used to explore changes in
+                        simulated root architecture.
+                    </p>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-value">
+                        130+
+                    </span>
+
+                    <span class="metric-label">
+                        Statistics per Simulation
+                    </span>
+
+                    <p>
+                        Structural and geometric measurements calculated for
+                        each simulated root system.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <!-- =========================
+                 EARLIER RESEARCH
+            ========================== -->
+
+            <div class="earlier-research">
+
+                <div class="earlier-research-heading">
+
                     <div>
-                        <p class="section-number">03 / PROJECTS</p>
-                        <h2 class="split-title">
-                            Turning computation into tools and analysis.
-                        </h2>
+
+                        <p class="research-subsection-label">
+                            Earlier Research
+                        </p>
+
+                        <h3>
+                            Computational chemistry before
+                            computational biology.
+                        </h3>
+
                     </div>
 
-                    <div class="split-copy">
+
+                    <p class="earlier-research-intro">
+                        My earlier research introduced me to scientific computing
+                        through quantum chemistry, molecular dynamics, Linux-based
+                        workflows, and computational analysis of molecular systems.
+                    </p>
+
+                </div>
+
+
+                <article class="oled-research-card">
+
+                    <div class="oled-visual">
+
+                        <div class="oled-visual-label">
+                            MULTISCALE COMPUTATION
+                        </div>
+
+
+                        <div class="oled-pipeline">
+
+                            <div class="oled-stage">
+
+                                <span class="oled-stage-number">
+                                    01
+                                </span>
+
+                                <strong>
+                                    QUANTUM
+                                </strong>
+
+                                <small>
+                                    Electronic structure
+                                </small>
+
+                            </div>
+
+
+                            <div class="pipeline-connector"></div>
+
+
+                            <div class="oled-stage">
+
+                                <span class="oled-stage-number">
+                                    02
+                                </span>
+
+                                <strong>
+                                    DYNAMICS
+                                </strong>
+
+                                <small>
+                                    Molecular trajectories
+                                </small>
+
+                            </div>
+
+
+                            <div class="pipeline-connector"></div>
+
+
+                            <div class="oled-stage">
+
+                                <span class="oled-stage-number">
+                                    03
+                                </span>
+
+                                <strong>
+                                    ANALYSIS
+                                </strong>
+
+                                <small>
+                                    Python + comparison
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="oled-orbital">
+
+                            <div class="orbital-ring orbital-ring-one"></div>
+                            <div class="orbital-ring orbital-ring-two"></div>
+                            <div class="orbital-ring orbital-ring-three"></div>
+
+                            <div class="orbital-core"></div>
+
+                        </div>
+
+
+                        <p class="oled-visual-caption">
+                            Quantum calculations, molecular dynamics,
+                            and computational analysis combined in a
+                            multiscale OLED study.
+                        </p>
+
+                    </div>
+
+
+                    <div class="oled-content">
+
+                        <p class="research-kicker">
+                            Computational Chemistry · Research Report
+                        </p>
+
+                        <h3>
+                            Multiscale Simulations
+                            of OLED Molecules
+                        </h3>
+
+                        <p class="oled-subtitle">
+                            Quantum Optimizations, Comparative Analysis,
+                            and Optical Gap Estimations Across Time
+                        </p>
+
+
+                        <p class="research-lab">
+                            <strong>Department of Chemistry & Biochemistry</strong>
+                            <span>·</span>
+                            University of Arizona
+                        </p>
+
+                        <p class="research-collaboration">
+                            Luis Angulo + Sam Hershey
+                            <span>·</span>
+                            Equal contribution
+                        </p>
+
+
+                        <p class="oled-lead">
+                            I co-developed a multiscale computational study of
+                            <strong>3phCN-ICz, CzPA, and DOBNA</strong>,
+                            combining quantum calculations with molecular
+                            dynamics to investigate electronic structure and
+                            OLED-related molecular behavior.
+                        </p>
+
+
+                        <p class="oled-detail">
+                            Using <em>Gaussian with B3LYP/6-31G(d,p)</em>,
+                            we calculated HOMO, LUMO, and fundamental-gap
+                            values and compared computational estimates with
+                            values reported in the literature.
+                        </p>
+
+
+                        <p class="oled-detail">
+                            We then used <em>GROMACS molecular dynamics</em>
+                            with the OPLSaa force field to study molecular
+                            behavior across 8,000 ps simulations, extracting
+                            structures at multiple time points for additional
+                            electronic-property calculations.
+                        </p>
+
+
+                        <p class="oled-detail">
+                            Python analysis connected molecular trajectories,
+                            energy profiles, temperature, and electronic
+                            properties across time. Under our approximations,
+                            molecular interactions produced relatively small
+                            changes in estimated color purity.
+                        </p>
+
+
+                        <div class="research-tags oled-tags">
+
+                            <span>Gaussian</span>
+                            <span>GROMACS</span>
+                            <span>Slurm</span>
+                            <span>Python</span>
+                            <span>NumPy</span>
+                            <span>pandas</span>
+                            <span>DFT</span>
+                            <span>Molecular Dynamics</span>
+
+                        </div>
+
+
+                        <div class="research-links oled-links">
+
+                            <a
+                                href="https://luisferangulob.github.io/oled-multiscale-simulations.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="report-link"
+                            >
+                                View Research Report ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <div class="oled-methods">
+
+                    <article class="oled-method-card">
+
+                        <span>
+                            01 / QUANTUM
+                        </span>
+
+                        <h4>
+                            Electronic Structure
+                        </h4>
+
                         <p>
-                            My projects extend research and coursework into interactive tools and independent statistical analyses.
+                            Geometry optimization, frequency calculations,
+                            HOMO/LUMO estimation, and fundamental-gap analysis
+                            using Gaussian and density functional theory.
+                        </p>
+
+                    </article>
+
+
+                    <article class="oled-method-card">
+
+                        <span>
+                            02 / DYNAMICS
+                        </span>
+
+                        <h4>
+                            Molecular Simulation
+                        </h4>
+
+                        <p>
+                            NVT and NPT molecular dynamics simulations using
+                            GROMACS, periodic boundaries, and the OPLSaa
+                            force field.
+                        </p>
+
+                    </article>
+
+
+                    <article class="oled-method-card">
+
+                        <span>
+                            03 / ANALYSIS
+                        </span>
+
+                        <h4>
+                            Scientific Computing
+                        </h4>
+
+                        <p>
+                            Linux and Slurm workflows with Python, pandas,
+                            NumPy, and Matplotlib for trajectory-derived
+                            quantitative analysis.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section id="projects" class="content-section projects-section">
+
+            <p class="section-label">
+                03 / PROJECTS
+            </p>
+
+
+            <div class="projects-intro">
+
+                <div class="projects-heading">
+
+                    <h2>
+                        Turning computation
+                        into tools and analysis.
+                    </h2>
+
+                </div>
+
+
+                <div class="projects-intro-copy">
+
+                    <p>
+                        My projects extend research and coursework into
+                        interactive tools and independent statistical analyses.
+                    </p>
+
+                    <p>
+                        I use simulation, dimensionality reduction,
+                        visualization, and statistical modeling to make complex
+                        datasets easier to explore and interpret.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PROJECT 01
+            ========================== -->
+
+            <article class="project project-featured">
+
+                <div class="project-number">
+                    01
+                </div>
+
+
+                <div class="project-header">
+
+                    <div>
+
+                        <p class="project-type">
+                            Interactive Scientific Application
+                        </p>
+
+                        <h3>
+                            Root Architecture Visualizer
+                        </h3>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/luisferangulob/root-architecture-visualizer"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-arrow"
+                        aria-label="Open Root Architecture Visualizer repository"
+                    >
+                        ↗
+                    </a>
+
+                </div>
+
+
+                <div class="project-feature-grid">
+
+                    <div class="project-visual">
+
+                        <img
+                            src="https://raw.githubusercontent.com/luisferangulob/luisferangulob/main/App.gif"
+                            alt="Animated demonstration of the Root Architecture Visualizer"
+                        >
+
+                        <p class="project-caption">
+                            Interactive exploration of simulated root geometry,
+                            parameters, metrics, and statistical structure.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-copy">
+
+                        <p class="project-lead">
+                            An interactive analysis environment for
+                            <strong>exploring, comparing, and clustering
+                            simulated 3D root architectures.</strong>
                         </p>
 
                         <p>
-                            I use simulation, dimensionality reduction, visualization, and statistical modeling to make complex datasets easier to explore and interpret.
+                            The application turns simulation outputs into an
+                            interface for inspecting individual root geometries,
+                            parameter configurations, and quantitative
+                            structural measurements.
                         </p>
+
+                        <p>
+                            I am extending the app with
+                            <strong>PCA-based architecture analysis</strong>
+                            to study similarity across high-dimensional root
+                            measurements and identify groups of quantitatively
+                            related architectures.
+                        </p>
+
+                        <p>
+                            Cluster exploration connects numerical structure
+                            back to geometry by loading
+                            <em>real simulated roots nearest the PCA cluster
+                            centers</em>, rather than creating artificial
+                            centroid root structures.
+                        </p>
+
+
+                        <div class="project-tags">
+
+                            <span>Python</span>
+                            <span>Streamlit</span>
+                            <span>PCA</span>
+                            <span>Clustering</span>
+                            <span>Dimensionality Reduction</span>
+                            <span>Data Visualization</span>
+
+                        </div>
+
+
+                        <a
+                            href="https://github.com/luisferangulob/root-architecture-visualizer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-button"
+                        >
+                            View Repository ↗
+                        </a>
+
                     </div>
+
                 </div>
 
-                <div class="project-stack">
-                    <article class="project-card">
-                        <div class="project-card-inner">
-                            <div class="project-left">
-                                <p class="feature-label">INTERACTIVE SCIENTIFIC APPLICATION</p>
-                                <h3>Root Architecture Visualizer</h3>
-                                <div class="project-visual-placeholder">
-                                    Root visualizer app screenshot
-                                </div>
-                                <p class="media-caption">
-                                    Interactive exploration of simulated root geometry, parameters, metrics, and statistical structure.
-                                </p>
-                            </div>
 
-                            <div class="project-right">
-                                <p class="project-lead">
-                                    An interactive analysis environment for <strong>exploring, comparing, and clustering simulated 3D root architectures</strong>.
-                                </p>
+                <div class="project-capabilities">
 
-                                <p>
-                                    The application turns simulation outputs into an interface for inspecting individual root geometries,
-                                    parameter configurations, and quantitative structural measurements.
-                                </p>
+                    <article class="capability">
 
-                                <p>
-                                    I am extending the app with <strong>PCA-based architecture analysis</strong> to study similarity across
-                                    high-dimensional root measurements and identify groups of quantitatively related architectures.
-                                </p>
+                        <span>
+                            01
+                        </span>
 
-                                <p>
-                                    Cluster exploration connects numerical structure back to geometry by loading <em>real simulated roots nearest the PCA cluster centers</em>,
-                                    rather than creating artificial centroid root structures.
-                                </p>
+                        <h4>
+                            Explore
+                        </h4>
 
-                                <div class="tag-row">
-                                    <span>Python</span>
-                                    <span>Streamlit</span>
-                                    <span>PCA</span>
-                                    <span>Clustering</span>
-                                    <span>Dimensionality Reduction</span>
-                                    <span>Data Visualization</span>
-                                </div>
+                        <p>
+                            Inspect simulated 3D roots alongside their model
+                            parameters and calculated structural measurements.
+                        </p>
 
-                                <div class="button-row">
-                                    <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
-                                </div>
-                            </div>
+                    </article>
+
+
+                    <article class="capability">
+
+                        <span>
+                            02
+                        </span>
+
+                        <h4>
+                            Compare
+                        </h4>
+
+                        <p>
+                            Use quantitative measurements and PCA to examine
+                            similarity across large collections of root
+                            architectures.
+                        </p>
+
+                    </article>
+
+
+                    <article class="capability">
+
+                        <span>
+                            03
+                        </span>
+
+                        <h4>
+                            Cluster
+                        </h4>
+
+                        <p>
+                            Examine architecture groups and load representative
+                            simulated roots nearest their numerical PCA cluster
+                            centers.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PROJECT 02
+            ========================== -->
+
+            <article class="project project-secondary">
+
+                <div class="project-number">
+                    02
+                </div>
+
+
+                <div class="secondary-project-grid">
+
+                    <div class="secondary-project-title">
+
+                        <p class="project-type">
+                            Biomedical Statistics
+                        </p>
+
+                        <h3>
+                            Glioblastoma
+                            Survival Analysis
+                        </h3>
+
+                    </div>
+
+
+                    <div class="secondary-project-content">
+
+                        <p class="project-lead">
+                            A patient-level analysis of clinical and survival
+                            data from <strong>The Cancer Genome Atlas</strong>
+                            for glioblastoma.
+                        </p>
+
+                        <p>
+                            I cleaned and structured clinical records to examine
+                            survival time, censoring, demographic characteristics,
+                            and variables relevant to biomedical prognosis.
+                        </p>
+
+                        <p>
+                            The project strengthened my interest in
+                            <em>survival analysis, biomedical statistics,
+                            and computational approaches to disease data.</em>
+                        </p>
+
+
+                        <div class="project-tags">
+
+                            <span>Python</span>
+                            <span>pandas</span>
+                            <span>Survival Analysis</span>
+                            <span>Biomedical Data</span>
+                            <span>Data Cleaning</span>
+                            <span>TCGA</span>
+
                         </div>
 
-                        <div class="project-subgrid">
-                            <div class="sub-card">
-                                <span class="mini-number">01</span>
-                                <h4>Explore</h4>
-                                <p>Inspect simulated 3D roots alongside their model parameters and calculated structural measurements.</p>
-                            </div>
+                    </div>
 
-                            <div class="sub-card">
-                                <span class="mini-number">02</span>
-                                <h4>Compare</h4>
-                                <p>Use quantitative measurements and PCA to examine similarity across large collections of root architectures.</p>
-                            </div>
 
-                            <div class="sub-card">
-                                <span class="mini-number">03</span>
-                                <h4>Cluster</h4>
-                                <p>Examine architecture groups and load representative simulated roots nearest their numerical PCA cluster centers.</p>
-                            </div>
+                    <div class="gbm-visual">
+
+                        <div class="gbm-line"></div>
+
+                        <span class="gbm-label">
+                            SURVIVAL
+                        </span>
+
+                        <div class="gbm-stat">
+
+                            <strong>
+                                TCGA
+                            </strong>
+
+                            <span>
+                                Glioblastoma clinical data
+                            </span>
+
                         </div>
-                    </article>
 
-                    <article class="project-card compact-project">
-                        <div class="project-card-inner compact-layout">
-                            <div class="project-left">
-                                <p class="feature-label">BIOMEDICAL STATISTICS</p>
-                                <h3>Glioblastoma Survival Analysis</h3>
-                            </div>
+                    </div>
 
-                            <div class="project-right">
-                                <p class="project-lead">
-                                    A patient-level analysis of clinical and survival data from <strong>The Cancer Genome Atlas</strong> for glioblastoma.
-                                </p>
-
-                                <p>
-                                    I cleaned and structured clinical records to examine survival time, censoring, demographic characteristics,
-                                    and variables relevant to biomedical prognosis.
-                                </p>
-
-                                <p>
-                                    The project strengthened my interest in <em>survival analysis, biomedical statistics, and computational approaches to disease data</em>.
-                                </p>
-
-                                <div class="tag-row">
-                                    <span>Python</span>
-                                    <span>pandas</span>
-                                    <span>Survival Analysis</span>
-                                    <span>Biomedical Data</span>
-                                    <span>Data Cleaning</span>
-                                    <span>TCGA</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
                 </div>
-            </div>
+
+            </article>
+
         </section>
 
-        <!-- EXPERIENCE -->
-        <section class="section" id="experience">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-number">04 / EXPERIENCE</p>
-                    <h2 class="standard-title">Experience section</h2>
-                    <p class="section-intro">
-                        This section can hold your CV-style experience once you finish crafting it.
-                        For now, we can keep it simple and expand later.
-                    </p>
-                </div>
 
-                <div class="two-cards">
-                    <article class="info-card">
-                        <h3>Research</h3>
-                        <p>Computational Plant Science Laboratory, chemistry and biochemistry research, AI in healthcare, and future planetary-data work.</p>
-                    </article>
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
 
-                    <article class="info-card">
-                        <h3>Professional</h3>
-                        <p>University of Arizona Research Development Services and other academic/professional work can be added here once your CV is ready.</p>
-                    </article>
-                </div>
-            </div>
+        <section id="experience" class="content-section">
+
+            <p class="section-label">
+                04 / EXPERIENCE
+            </p>
+
         </section>
 
-        <!-- CONTACT -->
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-number">05 / CONTACT</p>
-                    <h2 class="standard-title">Let’s connect.</h2>
-                    <p class="section-intro">
-                        You can replace the placeholders below with your real links.
-                    </p>
-                </div>
 
-                <div class="contact-row">
-                    <a class="button button-outline" href="mailto:youremail@arizona.edu">Email</a>
-                    <a class="button button-outline" href="https://github.com/luisferangulob" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a class="button button-outline" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </div>
-            </div>
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact" class="content-section">
+
+            <p class="section-label">
+                05 / CONTACT
+            </p>
+
         </section>
+
     </main>
+
 </body>
+
 </html>
