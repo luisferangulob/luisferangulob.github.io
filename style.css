@@ -723,6 +723,11 @@ nav a:hover {
     background: rgba(88, 166, 255, 0.14);
 }
 
+
+/* =========================
+   RESEARCH METRICS
+========================= */
+
 .research-metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -776,6 +781,465 @@ nav a:hover {
 
     font-size: 0.88rem;
     line-height: 1.65;
+}
+
+
+/* =========================
+   EARLIER RESEARCH
+========================= */
+
+.earlier-research {
+    margin-top: 120px;
+
+    padding-top: 80px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.earlier-research-heading {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+
+    gap: 80px;
+
+    align-items: end;
+}
+
+.research-subsection-label {
+    margin: 0 0 18px;
+
+    color: #58a6ff;
+
+    font-family: monospace;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.earlier-research-heading h3 {
+    margin: 0;
+
+    max-width: 600px;
+
+    font-size: clamp(2.4rem, 4vw, 4.2rem);
+
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+}
+
+.earlier-research-intro {
+    margin: 0;
+
+    max-width: 620px;
+
+    color: #a7b0ba;
+
+    font-size: 1.08rem;
+    line-height: 1.85;
+}
+
+
+/* =========================
+   OLED RESEARCH CARD
+========================= */
+
+.oled-research-card {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+
+    gap: 52px;
+
+    margin-top: 65px;
+    padding: 30px;
+
+    border: 1px solid rgba(88, 166, 255, 0.20);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 27, 34, 0.96),
+            rgba(13, 17, 23, 0.90)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.22);
+}
+
+
+/* =========================
+   OLED VISUAL
+========================= */
+
+.oled-visual {
+    position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(88, 166, 255, 0.14);
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(88, 166, 255, 0.08),
+            transparent 58%
+        ),
+        #0d1117;
+}
+
+.oled-visual-label {
+    position: relative;
+
+    z-index: 2;
+
+    color: #58a6ff;
+
+    font-family: monospace;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+}
+
+.oled-pipeline {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0;
+
+    margin-top: 20px;
+}
+
+.oled-stage {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.oled-stage-number {
+    color: #58a6ff;
+
+    font-family: monospace;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.oled-stage strong {
+    color: #f0f6fc;
+
+    font-family: monospace;
+
+    font-size: 1rem;
+
+    letter-spacing: 0.08em;
+}
+
+.oled-stage small {
+    color: #7d8590;
+
+    font-size: 0.78rem;
+}
+
+.pipeline-connector {
+    width: 1px;
+    height: 38px;
+
+    margin: 9px 0 9px 5px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #58a6ff,
+            transparent
+        );
+}
+
+
+/* =========================
+   OLED ORBITAL GRAPHIC
+========================= */
+
+.oled-orbital {
+    position: absolute;
+
+    right: -25px;
+    bottom: 80px;
+
+    width: 290px;
+    height: 290px;
+
+    opacity: 0.62;
+}
+
+.orbital-ring {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border: 1px solid rgba(88, 166, 255, 0.55);
+    border-radius: 50%;
+}
+
+.orbital-ring-one {
+    width: 220px;
+    height: 80px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(18deg);
+}
+
+.orbital-ring-two {
+    width: 220px;
+    height: 80px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(78deg);
+}
+
+.orbital-ring-three {
+    width: 220px;
+    height: 80px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(138deg);
+}
+
+.orbital-core {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #58a6ff;
+
+    box-shadow:
+        0 0 30px rgba(88, 166, 255, 0.75);
+}
+
+.oled-visual-caption {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 40px 0 0;
+
+    max-width: 270px;
+
+    color: #6e7681;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 0.82rem;
+    font-style: italic;
+
+    line-height: 1.55;
+}
+
+
+/* =========================
+   OLED CONTENT
+========================= */
+
+.oled-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 14px 10px;
+}
+
+.oled-content h3 {
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #f0f6fc;
+
+    font-size: clamp(2.4rem, 3.6vw, 4rem);
+
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.oled-subtitle {
+    margin: 16px 0 0;
+
+    max-width: 620px;
+
+    color: #8b949e;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 1rem;
+    font-style: italic;
+
+    line-height: 1.6;
+}
+
+.research-collaboration {
+    margin: 8px 0 0;
+
+    color: #6e7681;
+
+    font-family: monospace;
+
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.research-collaboration span {
+    color: #58a6ff;
+
+    margin: 0 4px;
+}
+
+.oled-lead {
+    margin: 34px 0 0;
+
+    color: #e6edf3;
+
+    font-size: 1.16rem;
+    line-height: 1.75;
+}
+
+.oled-lead strong {
+    color: #58a6ff;
+}
+
+.oled-detail {
+    margin: 21px 0 0;
+
+    color: #8b949e;
+
+    font-size: 0.97rem;
+    line-height: 1.82;
+}
+
+.oled-detail em {
+    color: #c9d1d9;
+
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.oled-tags {
+    margin-top: 30px;
+}
+
+.oled-links {
+    margin-top: 30px;
+}
+
+.report-link {
+    color: #0d1117 !important;
+
+    background: #58a6ff !important;
+    border-color: #58a6ff !important;
+
+    font-weight: 700 !important;
+}
+
+.report-link:hover {
+    background: #79b8ff !important;
+}
+
+
+/* =========================
+   OLED METHOD CARDS
+========================= */
+
+.oled-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+.oled-method-card {
+    min-height: 230px;
+
+    padding: 28px;
+
+    border: 1px solid rgba(88, 166, 255, 0.18);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 27, 34, 0.82),
+            rgba(13, 17, 23, 0.74)
+        );
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.oled-method-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(88, 166, 255, 0.50);
+}
+
+.oled-method-card > span {
+    color: #58a6ff;
+
+    font-family: monospace;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+}
+
+.oled-method-card h4 {
+    margin: 48px 0 14px;
+
+    color: #f0f6fc;
+
+    font-size: 1.25rem;
+}
+
+.oled-method-card p {
+    margin: 0;
+
+    color: #7d8590;
+
+    font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 
@@ -1189,20 +1653,31 @@ nav a:hover {
 
     .about-grid,
     .research-intro,
-    .projects-intro {
+    .projects-intro,
+    .earlier-research-heading {
         grid-template-columns: 1fr;
 
         gap: 40px;
     }
 
     .about-details,
-    .research-metrics {
+    .research-metrics,
+    .oled-methods {
         grid-template-columns: 1fr;
     }
 
     .featured-research,
+    .oled-research-card,
     .project-feature-grid {
         grid-template-columns: 1fr;
+    }
+
+    .oled-visual {
+        min-height: 480px;
+    }
+
+    .oled-orbital {
+        right: 40px;
     }
 
     .project-capabilities {
@@ -1252,12 +1727,45 @@ nav a:hover {
 
     .about-heading h2,
     .research-heading h2,
-    .projects-heading h2 {
+    .projects-heading h2,
+    .earlier-research-heading h3 {
         font-size: 2.6rem;
     }
 
-    .featured-research {
+    .featured-research,
+    .oled-research-card {
         padding: 18px;
+    }
+
+    .earlier-research {
+        margin-top: 90px;
+
+        padding-top: 65px;
+    }
+
+    .oled-visual {
+        min-height: 440px;
+
+        padding: 22px;
+    }
+
+    .oled-orbital {
+        right: -65px;
+        bottom: 70px;
+
+        transform: scale(0.8);
+    }
+
+    .oled-content {
+        padding: 6px 2px;
+    }
+
+    .oled-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .oled-lead {
+        font-size: 1.08rem;
     }
 
     .project-header {
