@@ -1,2854 +1,622 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
+  const canvas = document.getElementById('conceptCanvas');
+  const phaseLabel = document.getElementById('phaseLabel');
+  if (!canvas) return;
 
-    /* ======================================================
-       ELEMENTS
-    ====================================================== */
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
 
-    const canvas =
-        document.getElementById("rootBrainCanvas");
+  const COLORS = {
+    axis: 'rgba(90, 150, 255, 0.10)',
+    outer: '#ff4da0',
+    branchA: '#b4d9ff',
+    branchB: '#d78dff',
+    branchC: '#7fc4ff',
+    seed: '#ff9d52',
+    ecg: '#c7e3ff'
+  };
 
-    const statusElement =
-        document.getElementById("animationStatus");
+  const seed = { x: 0, y: -0.52 };
+  const pivot = { x: 0.03, y: 0.02 };
 
 
-    if (!canvas) {
-        return;
+  const paths = [
+    {
+      name: 'outer-left',
+      color: COLORS.outer,
+      width: 0.018,
+      start: 0.00,
+      end: 0.62,
+      points: [
+        seed,
+        { x: -0.03, y: -0.47 },
+        { x: -0.08, y: -0.44 },
+        { x: -0.11, y: -0.39 },
+        { x: -0.17, y: -0.36 },
+        { x: -0.23, y: -0.32 },
+        { x: -0.28, y: -0.25 },
+        { x: -0.25, y: -0.17 },
+        { x: -0.31, y: -0.10 },
+        { x: -0.35, y: -0.02 },
+        { x: -0.31, y: 0.06 },
+        { x: -0.35, y: 0.15 },
+        { x: -0.29, y: 0.22 },
+        { x: -0.32, y: 0.30 },
+        { x: -0.26, y: 0.39 },
+        { x: -0.18, y: 0.46 },
+        { x: -0.10, y: 0.54 },
+        { x: -0.01, y: 0.57 }
+      ]
+    },
+    {
+      name: 'outer-right',
+      color: COLORS.outer,
+      width: 0.018,
+      start: 0.04,
+      end: 0.70,
+      points: [
+        seed,
+        { x: 0.05, y: -0.46 },
+        { x: 0.12, y: -0.43 },
+        { x: 0.19, y: -0.39 },
+        { x: 0.26, y: -0.33 },
+        { x: 0.35, y: -0.31 },
+        { x: 0.41, y: -0.24 },
+        { x: 0.37, y: -0.17 },
+        { x: 0.46, y: -0.12 },
+        { x: 0.50, y: -0.04 },
+        { x: 0.46, y: 0.05 },
+        { x: 0.53, y: 0.13 },
+        { x: 0.48, y: 0.22 },
+        { x: 0.54, y: 0.31 },
+        { x: 0.49, y: 0.40 },
+        { x: 0.39, y: 0.47 },
+        { x: 0.28, y: 0.54 },
+        { x: 0.15, y: 0.57 }
+      ]
+    },
+    {
+      name: 'main-inner-a',
+      color: COLORS.branchA,
+      width: 0.013,
+      start: 0.08,
+      end: 0.62,
+      points: [
+        seed,
+        { x: -0.01, y: -0.41 },
+        { x: 0.03, y: -0.33 },
+        { x: -0.01, y: -0.24 },
+        { x: 0.06, y: -0.15 },
+        { x: 0.01, y: -0.05 },
+        { x: 0.09, y: 0.07 },
+        { x: 0.02, y: 0.17 },
+        { x: 0.11, y: 0.29 },
+        { x: 0.04, y: 0.41 },
+        { x: 0.10, y: 0.54 }
+      ]
+    },
+    {
+      name: 'upper-loop',
+      color: COLORS.branchB,
+      width: 0.011,
+      start: 0.18,
+      end: 0.50,
+      points: [
+        { x: 0.02, y: -0.33 },
+        { x: 0.11, y: -0.28 },
+        { x: 0.18, y: -0.21 },
+        { x: 0.21, y: -0.12 },
+        { x: 0.20, y: -0.02 },
+        { x: 0.14, y: 0.07 },
+        { x: 0.05, y: 0.11 },
+        { x: -0.02, y: 0.08 },
+        { x: -0.07, y: 0.01 }
+      ]
+    },
+    {
+      name: 'left-shelf',
+      color: COLORS.branchC,
+      width: 0.011,
+      start: 0.22,
+      end: 0.56,
+      points: [
+        { x: -0.05, y: -0.19 },
+        { x: -0.13, y: -0.12 },
+        { x: -0.22, y: -0.10 },
+        { x: -0.28, y: -0.04 },
+        { x: -0.26, y: 0.05 },
+        { x: -0.17, y: 0.09 },
+        { x: -0.09, y: 0.16 },
+        { x: -0.13, y: 0.26 },
+        { x: -0.06, y: 0.36 },
+        { x: 0.02, y: 0.44 }
+      ]
+    },
+    {
+      name: 'middle-shelf',
+      color: COLORS.branchA,
+      width: 0.011,
+      start: 0.28,
+      end: 0.66,
+      points: [
+        { x: -0.18, y: -0.02 },
+        { x: -0.08, y: -0.05 },
+        { x: 0.02, y: -0.02 },
+        { x: 0.11, y: 0.03 },
+        { x: 0.19, y: 0.02 },
+        { x: 0.27, y: 0.09 },
+        { x: 0.34, y: 0.18 },
+        { x: 0.28, y: 0.29 }
+      ]
+    },
+    {
+      name: 'lower-shelf',
+      color: COLORS.branchB,
+      width: 0.011,
+      start: 0.34,
+      end: 0.72,
+      points: [
+        { x: -0.19, y: 0.14 },
+        { x: -0.10, y: 0.18 },
+        { x: 0.00, y: 0.18 },
+        { x: 0.10, y: 0.23 },
+        { x: 0.19, y: 0.23 },
+        { x: 0.28, y: 0.28 },
+        { x: 0.33, y: 0.39 }
+      ]
+    },
+    {
+      name: 'twig-1',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.24,
+      end: 0.40,
+      points: [
+        { x: -0.25, y: -0.17 },
+        { x: -0.33, y: -0.16 },
+        { x: -0.37, y: -0.10 }
+      ]
+    },
+    {
+      name: 'twig-2',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.28,
+      end: 0.46,
+      points: [
+        { x: -0.24, y: 0.08 },
+        { x: -0.31, y: 0.10 },
+        { x: -0.35, y: 0.16 }
+      ]
+    },
+    {
+      name: 'twig-3',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.33,
+      end: 0.50,
+      points: [
+        { x: -0.05, y: 0.18 },
+        { x: -0.10, y: 0.26 },
+        { x: -0.13, y: 0.33 }
+      ]
+    },
+    {
+      name: 'twig-4',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.37,
+      end: 0.55,
+      points: [
+        { x: 0.22, y: -0.18 },
+        { x: 0.30, y: -0.14 },
+        { x: 0.36, y: -0.07 }
+      ]
+    },
+    {
+      name: 'twig-5',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.39,
+      end: 0.57,
+      points: [
+        { x: 0.27, y: 0.06 },
+        { x: 0.35, y: 0.10 },
+        { x: 0.40, y: 0.17 }
+      ]
+    },
+    {
+      name: 'twig-6',
+      color: COLORS.branchA,
+      width: 0.007,
+      start: 0.43,
+      end: 0.62,
+      points: [
+        { x: 0.16, y: 0.33 },
+        { x: 0.23, y: 0.39 },
+        { x: 0.26, y: 0.47 }
+      ]
     }
+  ];
 
+  const timings = {
+    grow: 4200,
+    rotate: 1800,
+    brainHold: 900,
+    erase: 2600,
+    ecg: 2500
+  };
 
-    const ctx =
-        canvas.getContext("2d");
+  const cycleLength = Object.values(timings).reduce((a, b) => a + b, 0);
 
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
 
-    /* ======================================================
-       COLORS
-    ====================================================== */
+  function easeInOut(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
 
-    const COLORS = {
+  function easeOut(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
 
-        orange:
-            "#f48a4b",
+  function rotatePoint(p, angle) {
+    const dx = p.x - pivot.x;
+    const dy = p.y - pivot.y;
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
 
-        orangeSoft:
-            "rgba(244, 138, 75, 0.50)",
-
-        blue:
-            "#58a6ff",
-
-        lightBlue:
-            "#8ecaff",
-
-        paleBlue:
-            "#b7ddff",
-
-        purple:
-            "#c184ff",
-
-        pink:
-            "#ff83ad",
-
-        guide:
-            "rgba(88, 166, 255, 0.035)"
-
+    return {
+      x: pivot.x + dx * cos - dy * sin,
+      y: pivot.y + dx * sin + dy * cos
     };
+  }
 
+  let currentScale = 1;
 
-    /* ======================================================
-       CANVAS
-    ====================================================== */
+  function screenPoint(p) {
+    return {
+      x: canvas.width / 2 + p.x * currentScale,
+      y: canvas.height / 2 + p.y * currentScale
+    };
+  }
 
-    let width = 0;
-    let height = 0;
+  function pathLength(points) {
+    let len = 0;
+    for (let i = 1; i < points.length; i++) {
+      len += Math.hypot(
+        points[i].x - points[i - 1].x,
+        points[i].y - points[i - 1].y
+      );
+    }
+    return len;
+  }
 
-    const DPR =
-        window.devicePixelRatio || 1;
+  function partialPoints(points, progress) {
+    if (progress <= 0) return [];
+    if (progress >= 1) return points.slice();
 
+    const target = pathLength(points) * progress;
+    let walked = 0;
+    const result = [points[0]];
 
-    function resizeCanvas() {
+    for (let i = 1; i < points.length; i++) {
+      const a = points[i - 1];
+      const b = points[i];
+      const seg = Math.hypot(b.x - a.x, b.y - a.y);
 
-        const rect =
-            canvas.getBoundingClientRect();
-
-
-        width =
-            rect.width;
-
-        height =
-            rect.height;
-
-
-        canvas.width =
-            Math.round(
-                width * DPR
-            );
-
-        canvas.height =
-            Math.round(
-                height * DPR
-            );
-
-
-        ctx.setTransform(
-            DPR,
-            0,
-            0,
-            DPR,
-            0,
-            0
-        );
-
+      if (walked + seg <= target) {
+        result.push(b);
+        walked += seg;
+      } else {
+        const remain = target - walked;
+        const t = seg === 0 ? 0 : remain / seg;
+        result.push({
+          x: a.x + (b.x - a.x) * t,
+          y: a.y + (b.y - a.y) * t
+        });
+        break;
+      }
     }
 
+    return result;
+  }
 
-    resizeCanvas();
+  function clipPolylineLeft(points, clipX) {
+    if (points.length < 2) return points.slice();
 
+    const out = [];
 
-    window.addEventListener(
-        "resize",
-        resizeCanvas
-    );
+    for (let i = 0; i < points.length - 1; i++) {
+      const a = points[i];
+      const b = points[i + 1];
+      const aIn = a.x <= clipX;
+      const bIn = b.x <= clipX;
 
+      if (aIn && out.length === 0) out.push(a);
 
-    /* ======================================================
-       GENERAL HELPERS
-    ====================================================== */
-
-    function clamp(
-        value,
-        min = 0,
-        max = 1
-    ) {
-
-        return Math.max(
-            min,
-            Math.min(
-                max,
-                value
-            )
-        );
-
+      if (aIn && bIn) {
+        out.push(b);
+      } else if (aIn && !bIn) {
+        const t = (clipX - a.x) / (b.x - a.x);
+        out.push({
+          x: clipX,
+          y: a.y + (b.y - a.y) * t
+        });
+      } else if (!aIn && bIn) {
+        const t = (clipX - a.x) / (b.x - a.x);
+        out.push({
+          x: clipX,
+          y: a.y + (b.y - a.y) * t
+        });
+        out.push(b);
+      }
     }
 
+    return out;
+  }
 
-    function lerp(
-        a,
-        b,
-        t
-    ) {
+  function drawPolyline(points, color, width, alpha = 1) {
+    if (!points || points.length < 2) return;
 
-        return (
-            a
-            +
-            (
-                b - a
-            )
-            * t
-        );
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = Math.max(2, width * currentScale);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
 
+    ctx.beginPath();
+    const first = screenPoint(points[0]);
+    ctx.moveTo(first.x, first.y);
+
+    for (let i = 1; i < points.length; i++) {
+      const p = screenPoint(points[i]);
+      ctx.lineTo(p.x, p.y);
     }
 
+    ctx.stroke();
+    ctx.restore();
+  }
 
-    function easeInOutCubic(t) {
+  function drawSeed(point, alpha = 1) {
+    const p = screenPoint(point);
+    const r = 0.024 * currentScale;
 
-        t =
-            clamp(t);
+    ctx.save();
+    ctx.globalAlpha = alpha;
 
+    const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.2);
+    glow.addColorStop(0, 'rgba(255, 157, 82, 0.35)');
+    glow.addColorStop(1, 'rgba(255, 157, 82, 0)');
 
-        if (t < 0.5) {
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r * 3.2, 0, Math.PI * 2);
+    ctx.fill();
 
-            return (
-                4
-                * t
-                * t
-                * t
-            );
+    ctx.strokeStyle = 'rgba(255, 157, 82, 0.55)';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r * 1.55, 0, Math.PI * 2);
+    ctx.stroke();
 
-        }
+    ctx.fillStyle = COLORS.seed;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+    ctx.fill();
 
+    ctx.restore();
+  }
 
-        return (
-            1
-            -
-            Math.pow(
-                -2 * t + 2,
-                3
-            )
-            / 2
+  function drawAxis() {
+    ctx.save();
+    ctx.strokeStyle = COLORS.axis;
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.12, canvas.height / 2);
+    ctx.lineTo(canvas.width * 0.88, canvas.height / 2);
+    ctx.moveTo(canvas.width / 2, canvas.height * 0.10);
+    ctx.lineTo(canvas.width / 2, canvas.height * 0.90);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.floor(rect.width * dpr);
+    canvas.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+    currentScale = Math.min(canvas.width, canvas.height) * 0.46;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function transformedPaths(angle, progressMode = null) {
+    return paths.map(path => {
+      let pts = path.points;
+
+      if (progressMode !== null) {
+        const local = clamp(
+          (progressMode - path.start) / (path.end - path.start),
+          0,
+          1
         );
+        pts = partialPoints(pts, easeOut(local));
+      }
 
+      return {
+        ...path,
+        points: pts.map(p => rotatePoint(p, angle))
+      };
+    });
+  }
+
+  function drawGrowing(t) {
+    phaseLabel.textContent = 'Growing';
+    drawAxis();
+
+    const angle = 0;
+    const items = transformedPaths(angle, t);
+    drawSeed(rotatePoint(seed, angle));
+
+    items.forEach(item => {
+      drawPolyline(item.points, item.color, item.width);
+    });
+  }
+
+  function drawRotating(t) {
+    phaseLabel.textContent = 'Rotating';
+    drawAxis();
+
+    const angle = -Math.PI / 2 * easeInOut(t);
+    const items = transformedPaths(angle);
+    drawSeed(rotatePoint(seed, angle));
+
+    items.forEach(item => {
+      drawPolyline(item.points, item.color, item.width);
+    });
+  }
+
+  function drawBrainHold() {
+    phaseLabel.textContent = 'Brain';
+    drawAxis();
+
+    const angle = -Math.PI / 2;
+    const items = transformedPaths(angle);
+    drawSeed(rotatePoint(seed, angle), 0.55);
+
+    items.forEach(item => {
+      drawPolyline(item.points, item.color, item.width);
+    });
+  }
+
+  function drawErasing(t) {
+    phaseLabel.textContent = 'Erasing';
+    drawAxis();
+
+    const angle = -Math.PI / 2;
+    const rotatedItems = transformedPaths(angle);
+    const allPts = rotatedItems.flatMap(item => item.points);
+
+    const minX = Math.min(...allPts.map(p => p.x));
+    const maxX = Math.max(...allPts.map(p => p.x));
+    const clipX = maxX - (maxX - minX) * easeInOut(t);
+
+    rotatedItems.forEach(item => {
+      const clipped = clipPolylineLeft(item.points, clipX);
+      drawPolyline(clipped, item.color, item.width);
+    });
+
+    drawSeed(rotatePoint(seed, angle), 0.35);
+
+    const lineStart = { x: clipX, y: pivot.y + 0.02 };
+    const extend = clamp((t - 0.45) / 0.55, 0, 1);
+
+    if (extend > 0) {
+      const lineEnd = { x: clipX + 0.78 * extend, y: lineStart.y };
+      drawPolyline([lineStart, lineEnd], COLORS.ecg, 0.014, 1);
     }
-
-
-    function easeOutCubic(t) {
-
-        t =
-            clamp(t);
-
-
-        return (
-            1
-            -
-            Math.pow(
-                1 - t,
-                3
-            )
-        );
-
-    }
-
-
-    function smoothstep(t) {
-
-        t =
-            clamp(t);
-
-
-        return (
-            t
-            * t
-            * (
-                3
-                -
-                2 * t
-            )
-        );
-
-    }
-
-
-    function distance(
-        a,
-        b
-    ) {
-
-        return Math.hypot(
-            b.x - a.x,
-            b.y - a.y
-        );
-
-    }
-
-
-    /* ======================================================
-       ROTATION
-    ====================================================== */
-
-    function rotateNormalizedPoint(
-        point,
-        angle
-    ) {
-
-        const cos =
-            Math.cos(angle);
-
-        const sin =
-            Math.sin(angle);
-
-
-        return {
-
-            x:
-                point.x * cos
-                -
-                point.y * sin,
-
-            y:
-                point.x * sin
-                +
-                point.y * cos
-
-        };
-
-    }
-
-
-    /* ======================================================
-       STAGE
-    ====================================================== */
-
-    function getStage() {
-
-        return {
-
-            centerX:
-                width * 0.5,
-
-            centerY:
-                height * 0.51,
-
-            scale:
-                Math.min(
-                    width,
-                    height
-                )
-                * 0.31
-
-        };
-
-    }
-
-
-    function toScreen(
-        normalizedPoint,
-        angle = 0
-    ) {
-
-        const stage =
-            getStage();
-
-
-        const rotated =
-            rotateNormalizedPoint(
-                normalizedPoint,
-                angle
-            );
-
-
-        return {
-
-            x:
-                stage.centerX
-                +
-                rotated.x
-                * stage.scale,
-
-            y:
-                stage.centerY
-                +
-                rotated.y
-                * stage.scale
-
-        };
-
-    }
-
-
-    /* ======================================================
-       BACKGROUND GUIDE
-    ====================================================== */
-
-    function drawGuides() {
-
-        const stage =
-            getStage();
-
-
-        ctx.save();
-
-        ctx.strokeStyle =
-            COLORS.guide;
-
-        ctx.lineWidth =
-            1;
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            stage.centerX,
-            65
-        );
-
-        ctx.lineTo(
-            stage.centerX,
-            height - 65
-        );
-
-        ctx.stroke();
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            65,
-            stage.centerY
-        );
-
-        ctx.lineTo(
-            width - 65,
-            stage.centerY
-        );
-
-        ctx.stroke();
-
-
-        ctx.restore();
-
-    }
-
-
-    /* ======================================================
-       THE CORE IDEA
-
-       IMPORTANT:
-
-       These coordinates define the BRAIN orientation.
-
-       The seed / origin is on the LEFT.
-
-       When rotated +90 degrees:
-       the left origin becomes the TOP.
-
-       Therefore:
-
-       SAME EXACT STRUCTURE
-       brain orientation = 0 degrees
-       root orientation  = +90 degrees
-
-       NO MORPHING.
-       NO REARRANGEMENT.
-    ====================================================== */
-
-
-    /* ======================================================
-       BRANCHING NETWORK
-
-       The longer branches form the silhouette.
-
-       Smaller branches create:
-       - root laterals vertically
-       - brain folds horizontally
-
-       Branches contain sharper directional changes
-       instead of simple arcs.
-    ====================================================== */
-
-    const NETWORK = [
-
-        /* ----------------------------------------------
-           PRIMARY CENTRAL AXIS
-
-           This eventually survives longest during erase
-           and becomes the horizontal ECG baseline.
-        ---------------------------------------------- */
-
-        {
-            id:
-                "central",
-
-            color:
-                COLORS.paleBlue,
-
-            width:
-                4.2,
-
-            growStart:
-                0.00,
-
-            growEnd:
-                0.43,
-
-            eraseOrder:
-                1.00,
-
-            preserve:
-                true,
-
-            points: [
-
-                { x: -1.04, y: 0.00 },
-
-                { x: -0.87, y: -0.02 },
-
-                { x: -0.69, y: 0.03 },
-
-                { x: -0.50, y: -0.02 },
-
-                { x: -0.32, y: 0.04 },
-
-                { x: -0.13, y: 0.00 },
-
-                { x: 0.07, y: 0.05 },
-
-                { x: 0.26, y: -0.02 },
-
-                { x: 0.44, y: 0.02 },
-
-                { x: 0.62, y: -0.04 },
-
-                { x: 0.79, y: 0.00 },
-
-                { x: 0.98, y: 0.02 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           UPPER OUTER BRANCH
-
-           In root orientation:
-           long external root.
-
-           In brain orientation:
-           upper silhouette.
-        ---------------------------------------------- */
-
-        {
-            id:
-                "upper-outline",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                3.6,
-
-            growStart:
-                0.07,
-
-            growEnd:
-                0.72,
-
-            eraseOrder:
-                0.12,
-
-            points: [
-
-                { x: -0.87, y: -0.02 },
-
-                { x: -0.77, y: -0.22 },
-
-                { x: -0.65, y: -0.38 },
-
-                { x: -0.48, y: -0.50 },
-
-                { x: -0.27, y: -0.58 },
-
-                { x: -0.05, y: -0.61 },
-
-                { x: 0.16, y: -0.57 },
-
-                { x: 0.35, y: -0.48 },
-
-                { x: 0.52, y: -0.36 },
-
-                { x: 0.64, y: -0.20 },
-
-                { x: 0.70, y: -0.06 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           LOWER OUTER BRANCH
-        ---------------------------------------------- */
-
-        {
-            id:
-                "lower-outline",
-
-            color:
-                COLORS.blue,
-
-            width:
-                3.6,
-
-            growStart:
-                0.10,
-
-            growEnd:
-                0.78,
-
-            eraseOrder:
-                0.18,
-
-            points: [
-
-                { x: -0.82, y: 0.01 },
-
-                { x: -0.74, y: 0.22 },
-
-                { x: -0.61, y: 0.40 },
-
-                { x: -0.42, y: 0.52 },
-
-                { x: -0.19, y: 0.60 },
-
-                { x: 0.04, y: 0.62 },
-
-                { x: 0.27, y: 0.57 },
-
-                { x: 0.47, y: 0.47 },
-
-                { x: 0.62, y: 0.31 },
-
-                { x: 0.71, y: 0.14 },
-
-                { x: 0.75, y: 0.02 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           UPPER INTERIOR LARGE BRANCH
-        ---------------------------------------------- */
-
-        {
-            id:
-                "upper-main",
-
-            color:
-                COLORS.purple,
-
-            width:
-                3.2,
-
-            growStart:
-                0.17,
-
-            growEnd:
-                0.58,
-
-            eraseOrder:
-                0.27,
-
-            points: [
-
-                { x: -0.69, y: 0.03 },
-
-                { x: -0.61, y: -0.14 },
-
-                { x: -0.50, y: -0.27 },
-
-                { x: -0.34, y: -0.31 },
-
-                { x: -0.18, y: -0.26 },
-
-                { x: -0.07, y: -0.14 },
-
-                { x: -0.03, y: -0.02 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           UPPER FRONT FORK
-        ---------------------------------------------- */
-
-        {
-            id:
-                "upper-front-fork",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.6,
-
-            growStart:
-                0.29,
-
-            growEnd:
-                0.55,
-
-            eraseOrder:
-                0.42,
-
-            points: [
-
-                { x: -0.50, y: -0.27 },
-
-                { x: -0.53, y: -0.42 },
-
-                { x: -0.44, y: -0.50 },
-
-                { x: -0.32, y: -0.48 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "upper-front-fork-small",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.3,
-
-            growStart:
-                0.40,
-
-            growEnd:
-                0.59,
-
-            eraseOrder:
-                0.50,
-
-            points: [
-
-                { x: -0.44, y: -0.50 },
-
-                { x: -0.47, y: -0.58 },
-
-                { x: -0.41, y: -0.66 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           UPPER CENTRAL FORK
-        ---------------------------------------------- */
-
-        {
-            id:
-                "upper-middle",
-
-            color:
-                COLORS.paleBlue,
-
-            width:
-                2.7,
-
-            growStart:
-                0.33,
-
-            growEnd:
-                0.63,
-
-            eraseOrder:
-                0.34,
-
-            points: [
-
-                { x: -0.18, y: -0.26 },
-
-                { x: -0.12, y: -0.42 },
-
-                { x: -0.01, y: -0.48 },
-
-                { x: 0.09, y: -0.43 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "upper-middle-fork",
-
-            color:
-                COLORS.blue,
-
-            width:
-                2.3,
-
-            growStart:
-                0.46,
-
-            growEnd:
-                0.66,
-
-            eraseOrder:
-                0.46,
-
-            points: [
-
-                { x: -0.01, y: -0.48 },
-
-                { x: -0.03, y: -0.59 },
-
-                { x: 0.06, y: -0.67 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           UPPER REAR BRANCH
-        ---------------------------------------------- */
-
-        {
-            id:
-                "upper-rear",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.7,
-
-            growStart:
-                0.40,
-
-            growEnd:
-                0.69,
-
-            eraseOrder:
-                0.06,
-
-            points: [
-
-                { x: 0.26, y: -0.02 },
-
-                { x: 0.32, y: -0.18 },
-
-                { x: 0.42, y: -0.28 },
-
-                { x: 0.54, y: -0.29 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "upper-rear-fork",
-
-            color:
-                COLORS.purple,
-
-            width:
-                2.3,
-
-            growStart:
-                0.53,
-
-            growEnd:
-                0.73,
-
-            eraseOrder:
-                0.02,
-
-            points: [
-
-                { x: 0.42, y: -0.28 },
-
-                { x: 0.47, y: -0.40 },
-
-                { x: 0.58, y: -0.44 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           LOWER INTERIOR LARGE BRANCH
-        ---------------------------------------------- */
-
-        {
-            id:
-                "lower-main",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                3.1,
-
-            growStart:
-                0.20,
-
-            growEnd:
-                0.62,
-
-            eraseOrder:
-                0.30,
-
-            points: [
-
-                { x: -0.61, y: 0.02 },
-
-                { x: -0.56, y: 0.18 },
-
-                { x: -0.44, y: 0.29 },
-
-                { x: -0.29, y: 0.31 },
-
-                { x: -0.13, y: 0.25 },
-
-                { x: 0.00, y: 0.13 },
-
-                { x: 0.07, y: 0.05 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           LOWER FRONT ROOT FORKS
-        ---------------------------------------------- */
-
-        {
-            id:
-                "lower-front",
-
-            color:
-                COLORS.blue,
-
-            width:
-                2.6,
-
-            growStart:
-                0.36,
-
-            growEnd:
-                0.63,
-
-            eraseOrder:
-                0.54,
-
-            points: [
-
-                { x: -0.44, y: 0.29 },
-
-                { x: -0.48, y: 0.43 },
-
-                { x: -0.41, y: 0.53 },
-
-                { x: -0.30, y: 0.55 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "lower-front-fork",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.2,
-
-            growStart:
-                0.47,
-
-            growEnd:
-                0.68,
-
-            eraseOrder:
-                0.59,
-
-            points: [
-
-                { x: -0.41, y: 0.53 },
-
-                { x: -0.44, y: 0.63 },
-
-                { x: -0.37, y: 0.70 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           LOWER CENTRAL
-        ---------------------------------------------- */
-
-        {
-            id:
-                "lower-middle",
-
-            color:
-                COLORS.purple,
-
-            width:
-                2.7,
-
-            growStart:
-                0.38,
-
-            growEnd:
-                0.68,
-
-            eraseOrder:
-                0.38,
-
-            points: [
-
-                { x: -0.13, y: 0.25 },
-
-                { x: -0.08, y: 0.40 },
-
-                { x: 0.04, y: 0.48 },
-
-                { x: 0.16, y: 0.43 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "lower-middle-fork",
-
-            color:
-                COLORS.blue,
-
-            width:
-                2.3,
-
-            growStart:
-                0.50,
-
-            growEnd:
-                0.72,
-
-            eraseOrder:
-                0.44,
-
-            points: [
-
-                { x: 0.04, y: 0.48 },
-
-                { x: 0.02, y: 0.59 },
-
-                { x: 0.10, y: 0.67 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           LOWER REAR
-        ---------------------------------------------- */
-
-        {
-            id:
-                "lower-rear",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.7,
-
-            growStart:
-                0.43,
-
-            growEnd:
-                0.72,
-
-            eraseOrder:
-                0.10,
-
-            points: [
-
-                { x: 0.44, y: 0.02 },
-
-                { x: 0.48, y: 0.17 },
-
-                { x: 0.58, y: 0.27 },
-
-                { x: 0.68, y: 0.25 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "lower-rear-fork",
-
-            color:
-                COLORS.purple,
-
-            width:
-                2.2,
-
-            growStart:
-                0.56,
-
-            growEnd:
-                0.76,
-
-            eraseOrder:
-                0.04,
-
-            points: [
-
-                { x: 0.58, y: 0.27 },
-
-                { x: 0.62, y: 0.39 },
-
-                { x: 0.72, y: 0.43 }
-
-            ]
-
-        },
-
-
-        /* ----------------------------------------------
-           SHORT BRAIN / ROOT SIDE BRANCHES
-        ---------------------------------------------- */
-
-        {
-            id:
-                "tiny-upper-one",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.0,
-
-            growStart:
-                0.50,
-
-            growEnd:
-                0.68,
-
-            eraseOrder:
-                0.24,
-
-            points: [
-
-                { x: 0.09, y: -0.43 },
-
-                { x: 0.17, y: -0.51 },
-
-                { x: 0.24, y: -0.49 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "tiny-upper-two",
-
-            color:
-                COLORS.blue,
-
-            width:
-                2.0,
-
-            growStart:
-                0.52,
-
-            growEnd:
-                0.70,
-
-            eraseOrder:
-                0.15,
-
-            points: [
-
-                { x: 0.54, y: -0.29 },
-
-                { x: 0.62, y: -0.35 },
-
-                { x: 0.69, y: -0.31 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "tiny-lower-one",
-
-            color:
-                COLORS.lightBlue,
-
-            width:
-                2.0,
-
-            growStart:
-                0.53,
-
-            growEnd:
-                0.72,
-
-            eraseOrder:
-                0.22,
-
-            points: [
-
-                { x: 0.16, y: 0.43 },
-
-                { x: 0.24, y: 0.50 },
-
-                { x: 0.32, y: 0.47 }
-
-            ]
-
-        },
-
-
-        {
-            id:
-                "tiny-lower-two",
-
-            color:
-                COLORS.blue,
-
-            width:
-                2.0,
-
-            growStart:
-                0.58,
-
-            growEnd:
-                0.76,
-
-            eraseOrder:
-                0.08,
-
-            points: [
-
-                { x: 0.68, y: 0.25 },
-
-                { x: 0.75, y: 0.31 },
-
-                { x: 0.81, y: 0.27 }
-
-            ]
-
-        }
-
+  }
+
+  function drawECG(t) {
+    phaseLabel.textContent = 'Pulse';
+    drawAxis();
+
+    const y = pivot.y + 0.02;
+    const x0 = -0.42;
+    const x1 = 0.42;
+    const beatStart = -0.05;
+
+    const line = [
+      { x: x0, y: y },
+      { x: beatStart - 0.08, y: y },
+      { x: beatStart, y: y - 0.02 },
+      { x: beatStart + 0.04, y: y + 0.18 },
+      { x: beatStart + 0.08, y: y - 0.30 },
+      { x: beatStart + 0.13, y: y + 0.22 },
+      { x: beatStart + 0.19, y: y },
+      { x: x1, y: y }
     ];
 
+    const reveal = clamp(t / 0.55, 0, 1);
+    drawPolyline(partialPoints(line, reveal), COLORS.ecg, 0.014);
 
-    /* ======================================================
-       LINE DRAWING
-    ====================================================== */
+    if (t > 0.55) {
+      const heartT = (t - 0.55) / 0.45;
+      const hx = 0.23;
+      const hy = y - 0.01;
+      const s = 0.11 * Math.min(1, easeOut(heartT));
+      const glowAlpha = 0.4 * Math.sin(Math.min(1, heartT) * Math.PI);
 
-    function pathLength(points) {
+      ctx.save();
+      ctx.strokeStyle = '#ff7ab8';
+      ctx.lineWidth = Math.max(2, 0.012 * currentScale);
+      ctx.shadowColor = `rgba(255, 122, 184, ${glowAlpha})`;
+      ctx.shadowBlur = 18;
 
-        let length =
-            0;
+      ctx.beginPath();
+      for (let i = 0; i <= 80; i++) {
+        const a = (i / 80) * Math.PI * 2;
+        const x = 16 * Math.pow(Math.sin(a), 3);
+        const yv = -(
+          13 * Math.cos(a) -
+          5 * Math.cos(2 * a) -
+          2 * Math.cos(3 * a) -
+          Math.cos(4 * a)
+        );
 
+        const p = screenPoint({
+          x: hx + (x / 32) * s,
+          y: hy + (yv / 32) * s
+        });
 
-        for (
-            let i = 1;
-            i < points.length;
-            i++
-        ) {
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
 
-            length +=
-                distance(
-                    points[i - 1],
-                    points[i]
-                );
-
-        }
-
-
-        return length;
-
+      ctx.stroke();
+      ctx.restore();
     }
+  }
 
+  function loop(now) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    function drawPartialPath(
-        normalizedPoints,
-        {
-            angle = 0,
-            progress = 1,
-            reverse = false,
-            color = COLORS.lightBlue,
-            lineWidth = 3,
-            alpha = 1,
-            glow = 0
-        } = {}
+    const time = now % cycleLength;
+
+    if (time < timings.grow) {
+      drawGrowing(time / timings.grow);
+    } else if (time < timings.grow + timings.rotate) {
+      drawRotating((time - timings.grow) / timings.rotate);
+    } else if (time < timings.grow + timings.rotate + timings.brainHold) {
+      drawBrainHold();
+    } else if (
+      time <
+      timings.grow + timings.rotate + timings.brainHold + timings.erase
     ) {
-
-        progress =
-            clamp(progress);
-
-
-        if (
-            progress <= 0
-            ||
-            normalizedPoints.length < 2
-        ) {
-
-            return;
-
-        }
-
-
-        const points =
-            reverse
-                ? [...normalizedPoints].reverse()
-                : normalizedPoints;
-
-
-        const total =
-            pathLength(points);
-
-
-        const target =
-            total * progress;
-
-
-        let travelled =
-            0;
-
-
-        ctx.save();
-
-
-        ctx.globalAlpha =
-            alpha;
-
-
-        ctx.strokeStyle =
-            color;
-
-
-        ctx.lineWidth =
-            lineWidth;
-
-
-        ctx.lineCap =
-            "round";
-
-
-        ctx.lineJoin =
-            "round";
-
-
-        if (glow > 0) {
-
-            ctx.shadowColor =
-                color;
-
-            ctx.shadowBlur =
-                glow;
-
-        }
-
-
-        const first =
-            toScreen(
-                points[0],
-                angle
-            );
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(
-            first.x,
-            first.y
-        );
-
-
-        for (
-            let i = 1;
-            i < points.length;
-            i++
-        ) {
-
-            const previous =
-                points[i - 1];
-
-            const current =
-                points[i];
-
-
-            const segmentLength =
-                distance(
-                    previous,
-                    current
-                );
-
-
-            if (
-                travelled
-                +
-                segmentLength
-                <=
-                target
-            ) {
-
-                const screen =
-                    toScreen(
-                        current,
-                        angle
-                    );
-
-
-                ctx.lineTo(
-                    screen.x,
-                    screen.y
-                );
-
-
-                travelled +=
-                    segmentLength;
-
-            }
-
-            else {
-
-                const remaining =
-                    target
-                    -
-                    travelled;
-
-
-                const ratio =
-                    segmentLength === 0
-                        ? 0
-                        : remaining
-                        /
-                        segmentLength;
-
-
-                const partial = {
-
-                    x:
-                        lerp(
-                            previous.x,
-                            current.x,
-                            ratio
-                        ),
-
-                    y:
-                        lerp(
-                            previous.y,
-                            current.y,
-                            ratio
-                        )
-
-                };
-
-
-                const screen =
-                    toScreen(
-                        partial,
-                        angle
-                    );
-
-
-                ctx.lineTo(
-                    screen.x,
-                    screen.y
-                );
-
-
-                break;
-
-            }
-
-        }
-
-
-        ctx.stroke();
-
-
-        ctx.restore();
-
+      drawErasing(
+        (time - timings.grow - timings.rotate - timings.brainHold) /
+          timings.erase
+      );
+    } else {
+      drawECG(
+        (time -
+          timings.grow -
+          timings.rotate -
+          timings.brainHold -
+          timings.erase) /
+          timings.ecg
+      );
     }
 
-
-    /* ======================================================
-       SEED
-    ====================================================== */
-
-    const SEED_POINT = {
-
-        x:
-            -1.04,
-
-        y:
-            0
-
-    };
-
-
-    function drawSeed(
-        angle,
-        alpha = 1
-    ) {
-
-        const position =
-            toScreen(
-                SEED_POINT,
-                angle
-            );
-
-
-        const radius =
-            13;
-
-
-        ctx.save();
-
-
-        ctx.globalAlpha =
-            alpha;
-
-
-        const gradient =
-            ctx.createRadialGradient(
-                position.x,
-                position.y,
-                0,
-                position.x,
-                position.y,
-                42
-            );
-
-
-        gradient.addColorStop(
-            0,
-            "rgba(244, 138, 75, 0.48)"
-        );
-
-
-        gradient.addColorStop(
-            1,
-            "rgba(244, 138, 75, 0)"
-        );
-
-
-        ctx.fillStyle =
-            gradient;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            position.x,
-            position.y,
-            42,
-            0,
-            Math.PI * 2
-        );
-
-
-        ctx.fill();
-
-
-        ctx.fillStyle =
-            COLORS.orange;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            position.x,
-            position.y,
-            radius,
-            0,
-            Math.PI * 2
-        );
-
-
-        ctx.fill();
-
-
-        ctx.strokeStyle =
-            COLORS.orangeSoft;
-
-
-        ctx.lineWidth =
-            2;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            position.x,
-            position.y,
-            radius + 8,
-            0,
-            Math.PI * 2
-        );
-
-
-        ctx.stroke();
-
-
-        ctx.restore();
-
-    }
-
-
-    /* ======================================================
-       DRAW NETWORK
-    ====================================================== */
-
-    function drawGrowingNetwork(
-        growth
-    ) {
-
-        /*
-            +90 degrees turns the
-            brain-left origin into
-            the root-top origin.
-        */
-
-        const rootAngle =
-            Math.PI / 2;
-
-
-        drawSeed(
-            rootAngle,
-            1
-        );
-
-
-        NETWORK.forEach(
-            branch => {
-
-                const local =
-                    clamp(
-                        (
-                            growth
-                            -
-                            branch.growStart
-                        )
-                        /
-                        (
-                            branch.growEnd
-                            -
-                            branch.growStart
-                        )
-                    );
-
-
-                drawPartialPath(
-                    branch.points,
-                    {
-                        angle:
-                            rootAngle,
-
-                        progress:
-                            local,
-
-                        color:
-                            branch.color,
-
-                        lineWidth:
-                            branch.width,
-
-                        alpha:
-                            1
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-    function drawCompleteNetwork(
-        angle,
-        alpha = 1
-    ) {
-
-        NETWORK.forEach(
-            branch => {
-
-                drawPartialPath(
-                    branch.points,
-                    {
-                        angle,
-                        progress:
-                            1,
-
-                        color:
-                            branch.color,
-
-                        lineWidth:
-                            branch.width,
-
-                        alpha
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-    /* ======================================================
-       ERASE BRAIN
-
-       IMPORTANT:
-       BRANCHES DO NOT MOVE.
-
-       They are removed in place.
-
-       Higher eraseOrder =
-       survives longer.
-
-       The central line survives
-       until the end.
-    ====================================================== */
-
-    function drawErasingBrain(
-        eraseProgress
-    ) {
-
-        NETWORK.forEach(
-            branch => {
-
-                if (
-                    branch.preserve
-                ) {
-
-                    /*
-                        Keep central horizontal
-                        branch almost completely.
-                    */
-
-                    const centralErase =
-                        clamp(
-                            (
-                                eraseProgress
-                                -
-                                0.78
-                            )
-                            /
-                            0.22
-                        );
-
-
-                    drawPartialPath(
-                        branch.points,
-                        {
-                            angle:
-                                0,
-
-                            progress:
-                                1
-                                -
-                                centralErase
-                                * 0.15,
-
-                            color:
-                                COLORS.paleBlue,
-
-                            lineWidth:
-                                4.2,
-
-                            alpha:
-                                1
-                        }
-                    );
-
-
-                    return;
-
-                }
-
-
-                /*
-                    Back first, front later.
-
-                    eraseOrder determines
-                    when branch starts vanishing.
-                */
-
-                const startErase =
-                    branch.eraseOrder
-                    * 0.72;
-
-
-                const localErase =
-                    clamp(
-                        (
-                            eraseProgress
-                            -
-                            startErase
-                        )
-                        /
-                        0.28
-                    );
-
-
-                const visible =
-                    1
-                    -
-                    smoothstep(
-                        localErase
-                    );
-
-
-                if (
-                    visible <= 0
-                ) {
-
-                    return;
-
-                }
-
-
-                /*
-                    Erasing from the far endpoint
-                    toward the branch origin.
-
-                    This means line stays fixed.
-                */
-
-                drawPartialPath(
-                    branch.points,
-                    {
-                        angle:
-                            0,
-
-                        progress:
-                            visible,
-
-                        color:
-                            branch.color,
-
-                        lineWidth:
-                            branch.width,
-
-                        alpha:
-                            clamp(
-                                visible
-                                * 1.4
-                            )
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-    /* ======================================================
-       ECG
-    ====================================================== */
-
-    function getECGPoints() {
-
-        const stage =
-            getStage();
-
-
-        const y =
-            stage.centerY;
-
-
-        const scale =
-            stage.scale;
-
-
-        return [
-
-            {
-                x:
-                    stage.centerX
-                    -
-                    scale * 0.95,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    -
-                    scale * 0.55,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    -
-                    scale * 0.28,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    -
-                    scale * 0.12,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    -
-                    scale * 0.04,
-
-                y:
-                    y
-                    -
-                    scale * 0.13
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.03,
-
-                y:
-                    y
-                    +
-                    scale * 0.20
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.11,
-
-                y:
-                    y
-                    -
-                    scale * 0.35
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.21,
-
-                y:
-                    y
-                    +
-                    scale * 0.23
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.34,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.60,
-
-                y
-            },
-
-            {
-                x:
-                    stage.centerX
-                    +
-                    scale * 0.82,
-
-                y
-            }
-
-        ];
-
-    }
-
-
-    function screenPathLength(
-        points
-    ) {
-
-        let total =
-            0;
-
-
-        for (
-            let i = 1;
-            i < points.length;
-            i++
-        ) {
-
-            total +=
-                distance(
-                    points[i - 1],
-                    points[i]
-                );
-
-        }
-
-
-        return total;
-
-    }
-
-
-    function drawScreenPath(
-        points,
-        progress,
-        color,
-        lineWidth
-    ) {
-
-        if (
-            progress <= 0
-            ||
-            points.length < 2
-        ) {
-
-            return;
-
-        }
-
-
-        const total =
-            screenPathLength(
-                points
-            );
-
-
-        const target =
-            total
-            *
-            clamp(progress);
-
-
-        let travelled =
-            0;
-
-
-        ctx.save();
-
-
-        ctx.strokeStyle =
-            color;
-
-
-        ctx.lineWidth =
-            lineWidth;
-
-
-        ctx.lineCap =
-            "round";
-
-
-        ctx.lineJoin =
-            "round";
-
-
-        ctx.shadowColor =
-            color;
-
-
-        ctx.shadowBlur =
-            8;
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(
-            points[0].x,
-            points[0].y
-        );
-
-
-        for (
-            let i = 1;
-            i < points.length;
-            i++
-        ) {
-
-            const a =
-                points[i - 1];
-
-            const b =
-                points[i];
-
-
-            const segment =
-                distance(
-                    a,
-                    b
-                );
-
-
-            if (
-                travelled
-                +
-                segment
-                <=
-                target
-            ) {
-
-                ctx.lineTo(
-                    b.x,
-                    b.y
-                );
-
-
-                travelled +=
-                    segment;
-
-            }
-
-            else {
-
-                const remaining =
-                    target
-                    -
-                    travelled;
-
-
-                const ratio =
-                    segment === 0
-                        ? 0
-                        : remaining
-                        /
-                        segment;
-
-
-                ctx.lineTo(
-                    lerp(
-                        a.x,
-                        b.x,
-                        ratio
-                    ),
-
-                    lerp(
-                        a.y,
-                        b.y,
-                        ratio
-                    )
-                );
-
-
-                break;
-
-            }
-
-        }
-
-
-        ctx.stroke();
-
-
-        ctx.restore();
-
-    }
-
-
-    /* ======================================================
-       HEART
-    ====================================================== */
-
-    function createHeartPoints(
-        centerX,
-        centerY,
-        size
-    ) {
-
-        const points =
-            [];
-
-
-        const samples =
-            100;
-
-
-        for (
-            let i = 0;
-            i <= samples;
-            i++
-        ) {
-
-            const t =
-                (
-                    i
-                    /
-                    samples
-                )
-                *
-                Math.PI
-                *
-                2;
-
-
-            const x =
-                16
-                *
-                Math.pow(
-                    Math.sin(t),
-                    3
-                );
-
-
-            const y =
-                -(
-                    13
-                    *
-                    Math.cos(t)
-
-                    -
-
-                    5
-                    *
-                    Math.cos(
-                        2 * t
-                    )
-
-                    -
-
-                    2
-                    *
-                    Math.cos(
-                        3 * t
-                    )
-
-                    -
-
-                    Math.cos(
-                        4 * t
-                    )
-                );
-
-
-            points.push({
-
-                x:
-                    centerX
-                    +
-                    x
-                    *
-                    size
-                    /
-                    18,
-
-                y:
-                    centerY
-                    +
-                    y
-                    *
-                    size
-                    /
-                    18
-
-            });
-
-        }
-
-
-        return points;
-
-    }
-
-
-    function drawECG(
-        progress
-    ) {
-
-        const points =
-            getECGPoints();
-
-
-        const lineProgress =
-            clamp(
-                progress
-                /
-                0.68
-            );
-
-
-        drawScreenPath(
-            points,
-            lineProgress,
-            COLORS.paleBlue,
-            4.3
-        );
-
-
-        /*
-            Heart appears midway
-            through the signal.
-        */
-
-        if (
-            progress > 0.53
-        ) {
-
-            const stage =
-                getStage();
-
-
-            const heartProgress =
-                clamp(
-                    (
-                        progress
-                        -
-                        0.53
-                    )
-                    /
-                    0.32
-                );
-
-
-            const heartCenterX =
-                stage.centerX
-                +
-                stage.scale
-                * 0.78;
-
-
-            const heartCenterY =
-                stage.centerY
-                -
-                3;
-
-
-            const heart =
-                createHeartPoints(
-                    heartCenterX,
-                    heartCenterY,
-                    stage.scale
-                    * 0.18
-                );
-
-
-            drawScreenPath(
-                heart,
-                heartProgress,
-                COLORS.pink,
-                3.8
-            );
-
-
-            if (
-                heartProgress
-                >=
-                0.98
-            ) {
-
-                const beat =
-                    (
-                        Math.sin(
-                            performance.now()
-                            *
-                            0.018
-                        )
-                        +
-                        1
-                    )
-                    /
-                    2;
-
-
-                ctx.save();
-
-
-                ctx.globalAlpha =
-                    0.72
-                    +
-                    beat
-                    *
-                    0.28;
-
-
-                ctx.shadowColor =
-                    COLORS.pink;
-
-
-                ctx.shadowBlur =
-                    10
-                    +
-                    beat
-                    *
-                    12;
-
-
-                drawScreenPath(
-                    heart,
-                    1,
-                    COLORS.pink,
-                    3.8
-                );
-
-
-                ctx.restore();
-
-            }
-
-        }
-
-    }
-
-
-    /* ======================================================
-       RESET LINE → SEED
-
-       The ECG line retreats toward
-       the original left-side point.
-
-       That point becomes the seed.
-
-       Then next frame rotates it
-       into the top root orientation.
-    ====================================================== */
-
-    function drawReset(
-        progress
-    ) {
-
-        const stage =
-            getStage();
-
-
-        const y =
-            stage.centerY;
-
-
-        const startX =
-            stage.centerX
-            -
-            stage.scale
-            *
-            1.04;
-
-
-        const endX =
-            lerp(
-                stage.centerX
-                +
-                stage.scale
-                *
-                0.98,
-
-                startX,
-
-                easeInOutCubic(
-                    progress
-                )
-            );
-
-
-        ctx.save();
-
-
-        ctx.strokeStyle =
-            COLORS.paleBlue;
-
-
-        ctx.lineWidth =
-            4.2;
-
-
-        ctx.lineCap =
-            "round";
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(
-            startX,
-            y
-        );
-
-
-        ctx.lineTo(
-            endX,
-            y
-        );
-
-
-        ctx.stroke();
-
-
-        ctx.restore();
-
-
-        /*
-            Seed grows at the same
-            left point.
-        */
-
-        const seedOpacity =
-            clamp(
-                (
-                    progress
-                    -
-                    0.42
-                )
-                /
-                0.58
-            );
-
-
-        const position = {
-
-            x:
-                startX,
-
-            y
-
-        };
-
-
-        ctx.save();
-
-
-        ctx.globalAlpha =
-            seedOpacity;
-
-
-        ctx.fillStyle =
-            COLORS.orange;
-
-
-        ctx.shadowColor =
-            COLORS.orange;
-
-
-        ctx.shadowBlur =
-            18;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            position.x,
-            position.y,
-            12,
-            0,
-            Math.PI * 2
-        );
-
-
-        ctx.fill();
-
-
-        ctx.restore();
-
-    }
-
-
-    /* ======================================================
-       TIMELINE
-
-       0.00 - 0.36
-       Grow root downward
-
-       0.36 - 0.44
-       Hold complete root
-
-       0.44 - 0.56
-       Rotate exact same root 90°
-
-       0.56 - 0.66
-       Hold brain
-
-       0.66 - 0.80
-       Erase back → front
-       no movement
-
-       0.80 - 0.93
-       ECG + heart
-
-       0.93 - 1.00
-       Flat line → seed
-    ====================================================== */
-
-    const LOOP_DURATION =
-        20000;
-
-
-    const startTime =
-        performance.now();
-
-
-    /* ======================================================
-       MAIN LOOP
-    ====================================================== */
-
-    function animate(now) {
-
-        ctx.clearRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-
-        drawGuides();
-
-
-        const progress =
-            (
-                (
-                    now
-                    -
-                    startTime
-                )
-                %
-                LOOP_DURATION
-            )
-            /
-            LOOP_DURATION;
-
-
-        /*
-            ROOT GROWTH
-        */
-
-        if (
-            progress
-            <
-            0.36
-        ) {
-
-            statusElement.textContent =
-                "GROWING";
-
-
-            const t =
-                easeOutCubic(
-                    progress
-                    /
-                    0.36
-                );
-
-
-            drawGrowingNetwork(
-                t
-            );
-
-        }
-
-
-        /*
-            ROOT HOLD
-        */
-
-        else if (
-            progress
-            <
-            0.44
-        ) {
-
-            statusElement.textContent =
-                "ROOT";
-
-
-            drawGrowingNetwork(
-                1
-            );
-
-        }
-
-
-        /*
-            ROTATE ONLY
-
-            No branches change position
-            relative to one another.
-        */
-
-        else if (
-            progress
-            <
-            0.56
-        ) {
-
-            statusElement.textContent =
-                "ROTATING";
-
-
-            const t =
-                easeInOutCubic(
-                    (
-                        progress
-                        -
-                        0.44
-                    )
-                    /
-                    0.12
-                );
-
-
-            const angle =
-                lerp(
-                    Math.PI / 2,
-                    0,
-                    t
-                );
-
-
-            drawCompleteNetwork(
-                angle,
-                1
-            );
-
-
-            drawSeed(
-                angle,
-                1
-                -
-                t
-                *
-                0.88
-            );
-
-        }
-
-
-        /*
-            BRAIN HOLD
-        */
-
-        else if (
-            progress
-            <
-            0.66
-        ) {
-
-            statusElement.textContent =
-                "BRAIN";
-
-
-            drawCompleteNetwork(
-                0,
-                1
-            );
-
-        }
-
-
-        /*
-            ERASE
-
-            No movement.
-        */
-
-        else if (
-            progress
-            <
-            0.80
-        ) {
-
-            statusElement.textContent =
-                "ERASING";
-
-
-            const t =
-                easeInOutCubic(
-                    (
-                        progress
-                        -
-                        0.66
-                    )
-                    /
-                    0.14
-                );
-
-
-            drawErasingBrain(
-                t
-            );
-
-        }
-
-
-        /*
-            ECG
-        */
-
-        else if (
-            progress
-            <
-            0.93
-        ) {
-
-            statusElement.textContent =
-                "PULSE";
-
-
-            const t =
-                easeOutCubic(
-                    (
-                        progress
-                        -
-                        0.80
-                    )
-                    /
-                    0.13
-                );
-
-
-            drawECG(
-                t
-            );
-
-        }
-
-
-        /*
-            RESET
-        */
-
-        else {
-
-            statusElement.textContent =
-                "RENEW";
-
-
-            const t =
-                easeInOutCubic(
-                    (
-                        progress
-                        -
-                        0.93
-                    )
-                    /
-                    0.07
-                );
-
-
-            drawReset(
-                t
-            );
-
-        }
-
-
-        requestAnimationFrame(
-            animate
-        );
-
-    }
-
-
-    requestAnimationFrame(
-        animate
-    );
-
-});
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+})();
