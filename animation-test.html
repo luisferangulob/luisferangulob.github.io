@@ -1,195 +1,2369 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>Animation Test — Root → Brain → Medicine</title>
+    <meta charset="UTF-8">
 
-  <style>
-    :root {
-      --bg: #030b18;
-      --panel: rgba(10, 18, 33, 0.9);
-      --panel-border: rgba(75, 132, 230, 0.22);
-      --grid: rgba(88, 160, 255, 0.08);
-      --text: #e8eef9;
-      --muted: rgba(232, 238, 249, 0.62);
-      --accent: #59a8ff;
-      --accent-soft: rgba(89, 168, 255, 0.18);
-    }
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    * {
-      box-sizing: border-box;
-    }
+    <title>
+        Root → Brain → Medicine Animation Test
+    </title>
 
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      color: var(--text);
-      background:
-        linear-gradient(rgba(88, 160, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88, 160, 255, 0.06) 1px, transparent 1px),
-        radial-gradient(circle at top, rgba(19, 37, 74, 0.35), transparent 45%),
-        var(--bg);
-      background-size: 56px 56px, 56px 56px, auto, auto;
-    }
 
-    body {
-      padding: 36px 24px 60px;
-    }
+    <style>
 
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--accent);
-      font-size: 0.95rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
 
-    .panel {
-      background: linear-gradient(
-        180deg,
-        rgba(18, 25, 39, 0.96) 0%,
-        rgba(8, 16, 30, 0.96) 100%
-      );
-      border: 1px solid var(--panel-border);
-      border-radius: 34px;
-      padding: 28px 28px 22px;
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.02) inset,
-        0 28px 60px rgba(0, 0, 0, 0.35);
-    }
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
 
-    .panel-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: center;
-      margin-bottom: 18px;
-      color: var(--accent);
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
 
-    .panel-head .loop {
-      color: rgba(232, 238, 249, 0.45);
-    }
+        body {
+            min-height: 100vh;
 
-    .canvas-shell {
-      border: 1px solid rgba(75, 132, 230, 0.18);
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at center, rgba(16, 34, 70, 0.25), transparent 40%),
-        #021126;
-      overflow: hidden;
-      position: relative;
-    }
+            padding: 42px 20px;
 
-    canvas {
-      display: block;
-      width: 100%;
-      height: min(68vh, 780px);
-    }
+            background-color: #0d1117;
 
-    .panel-foot {
-      margin-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-start;
-    }
+            background-image:
+                linear-gradient(
+                    rgba(88, 166, 255, 0.055) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(88, 166, 255, 0.055) 1px,
+                    transparent 1px
+                );
 
-    .goal {
-      margin: 0;
-      max-width: 900px;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--muted);
-    }
+            background-size: 64px 64px;
 
-    .goal strong {
-      color: var(--text);
-      font-weight: 800;
-    }
+            color: #f0f6fc;
 
-    .phase {
-      color: var(--accent);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.95rem;
-      min-width: 110px;
-      text-align: right;
-      padding-top: 4px;
-    }
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
 
-    @media (max-width: 900px) {
-      body {
-        padding: 22px 12px 32px;
-      }
 
-      .panel {
-        padding: 18px 18px 18px;
-        border-radius: 24px;
-      }
+        .test-page {
+            width: min(1120px, 92vw);
 
-      .canvas-shell {
-        border-radius: 20px;
-      }
+            margin: auto;
+        }
 
-      canvas {
-        height: 520px;
-      }
 
-      .panel-foot {
-        flex-direction: column;
-      }
+        .test-label {
+            margin: 0 0 18px;
 
-      .phase {
-        text-align: left;
-      }
-    }
-  </style>
+            color: #58a6ff;
+
+            font-family: monospace;
+
+            font-size: 0.82rem;
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+
+            text-transform: uppercase;
+        }
+
+
+        .animation-card {
+            padding: 28px;
+
+            border: 1px solid rgba(88, 166, 255, 0.20);
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(22, 27, 34, 0.97),
+                    rgba(13, 17, 23, 0.95)
+                );
+
+            box-shadow:
+                0 30px 90px rgba(0, 0, 0, 0.35);
+        }
+
+
+        .animation-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 20px;
+
+            font-family: monospace;
+
+            font-size: 0.78rem;
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+
+            text-transform: uppercase;
+        }
+
+
+        .animation-header span:first-child {
+            color: #58a6ff;
+        }
+
+
+        .animation-header span:last-child {
+            color: #6e7681;
+        }
+
+
+        .canvas-shell {
+            position: relative;
+
+            width: 100%;
+            height: 650px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(88, 166, 255, 0.16);
+
+            border-radius: 28px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(30, 72, 130, 0.10),
+                    transparent 45%
+                ),
+                #07111f;
+        }
+
+
+        #rootBrainCanvas {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .animation-footer {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 24px;
+
+            margin-top: 20px;
+        }
+
+
+        .animation-footer p {
+            max-width: 820px;
+
+            margin: 0;
+
+            color: #8b949e;
+
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+
+        .animation-footer strong {
+            color: #f0f6fc;
+        }
+
+
+        #animationStatus {
+            flex-shrink: 0;
+
+            color: #58a6ff;
+
+            font-family: monospace;
+
+            font-size: 0.83rem;
+            font-weight: 700;
+
+            letter-spacing: 0.15em;
+
+            text-transform: uppercase;
+        }
+
+
+        #errorMessage {
+            display: none;
+
+            margin-top: 14px;
+
+            padding: 12px 14px;
+
+            border: 1px solid rgba(255, 90, 90, 0.35);
+
+            border-radius: 10px;
+
+            color: #ff8c8c;
+
+            background: rgba(255, 90, 90, 0.08);
+
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 22px 12px;
+            }
+
+
+            .animation-card {
+                padding: 18px;
+
+                border-radius: 24px;
+            }
+
+
+            .animation-header,
+            .animation-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .canvas-shell {
+                height: 500px;
+
+                border-radius: 20px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-  <main class="wrap">
-    <p class="eyebrow">Standalone animation prototype</p>
 
-    <section class="panel">
-      <div class="panel-head">
-        <span>Root → Brain → Medicine</span>
-        <span class="loop">Continuous loop</span>
-      </div>
+    <main class="test-page">
 
-      <div class="canvas-shell">
-        <canvas id="conceptCanvas"></canvas>
-      </div>
-
-      <div class="panel-foot">
-        <p class="goal">
-          <strong>Goal:</strong> one branching structure grows downward from a seed,
-          rotates into a lateral brain without rearranging, erases in place into one
-          horizontal line, and that line becomes the ECG.
+        <p class="test-label">
+            Standalone Animation Prototype
         </p>
 
-        <div id="phaseLabel" class="phase">Growing</div>
-      </div>
-    </section>
-  </main>
 
-  <script defer src="animation-test.js?v=8"></script>
+        <section class="animation-card">
+
+            <div class="animation-header">
+
+                <span>
+                    Root → Brain → Medicine
+                </span>
+
+                <span>
+                    Continuous Loop
+                </span>
+
+            </div>
+
+
+            <div class="canvas-shell">
+
+                <canvas id="rootBrainCanvas"></canvas>
+
+            </div>
+
+
+            <div class="animation-footer">
+
+                <p>
+                    <strong>Goal:</strong>
+                    one branching structure grows downward from a seed,
+                    rotates into a lateral brain without rearranging,
+                    erases in place into one horizontal line,
+                    and that line becomes the ECG.
+                </p>
+
+
+                <span id="animationStatus">
+                    Starting
+                </span>
+
+            </div>
+
+
+            <div id="errorMessage"></div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /*
+        ============================================================
+        ROOT → BRAIN → MEDICINE
+        SELF-CONTAINED TEST
+        ============================================================
+        */
+
+
+        const canvas =
+            document.getElementById(
+                "rootBrainCanvas"
+            );
+
+
+        const statusElement =
+            document.getElementById(
+                "animationStatus"
+            );
+
+
+        const errorElement =
+            document.getElementById(
+                "errorMessage"
+            );
+
+
+        try {
+
+
+            const ctx =
+                canvas.getContext(
+                    "2d"
+                );
+
+
+            if (!ctx) {
+                throw new Error(
+                    "Canvas 2D context could not be created."
+                );
+            }
+
+
+            let width = 0;
+            let height = 0;
+
+
+            const COLORS = {
+
+                orange:
+                    "#f48a4b",
+
+                pink:
+                    "#ef3f91",
+
+                blue:
+                    "#58a6ff",
+
+                lightBlue:
+                    "#8ecaff",
+
+                paleBlue:
+                    "#c2e2ff",
+
+                purple:
+                    "#c184ff",
+
+                ecg:
+                    "#c9e6ff"
+
+            };
+
+
+            /*
+            ============================================================
+            BASIC HELPERS
+            ============================================================
+            */
+
+
+            function clamp(
+                value,
+                min = 0,
+                max = 1
+            ) {
+
+                return Math.max(
+                    min,
+                    Math.min(
+                        max,
+                        value
+                    )
+                );
+
+            }
+
+
+            function lerp(
+                a,
+                b,
+                t
+            ) {
+
+                return (
+                    a
+                    +
+                    (
+                        b - a
+                    )
+                    * t
+                );
+
+            }
+
+
+            function easeInOut(
+                t
+            ) {
+
+                t =
+                    clamp(t);
+
+
+                return (
+                    t < 0.5
+
+                        ?
+
+                        4
+                        *
+                        t
+                        *
+                        t
+                        *
+                        t
+
+                        :
+
+                        1
+                        -
+                        Math.pow(
+                            -2 * t + 2,
+                            3
+                        )
+                        /
+                        2
+                );
+
+            }
+
+
+            function easeOut(
+                t
+            ) {
+
+                t =
+                    clamp(t);
+
+
+                return (
+                    1
+                    -
+                    Math.pow(
+                        1 - t,
+                        3
+                    )
+                );
+
+            }
+
+
+            function resizeCanvas() {
+
+                const rect =
+                    canvas.getBoundingClientRect();
+
+
+                width =
+                    rect.width;
+
+
+                height =
+                    rect.height;
+
+
+                const dpr =
+                    window.devicePixelRatio || 1;
+
+
+                canvas.width =
+                    Math.round(
+                        width * dpr
+                    );
+
+
+                canvas.height =
+                    Math.round(
+                        height * dpr
+                    );
+
+
+                /*
+                We now draw using CSS pixels.
+
+                This removes the old
+                device-pixel coordinate ambiguity.
+                */
+
+                ctx.setTransform(
+                    dpr,
+                    0,
+                    0,
+                    dpr,
+                    0,
+                    0
+                );
+
+            }
+
+
+            resizeCanvas();
+
+
+            window.addEventListener(
+                "resize",
+                resizeCanvas
+            );
+
+
+            /*
+            ============================================================
+            COORDINATE SYSTEM
+            ============================================================
+            */
+
+
+            function scale() {
+
+                return (
+                    Math.min(
+                        width,
+                        height
+                    )
+                    *
+                    0.39
+                );
+
+            }
+
+
+            function toScreen(
+                point
+            ) {
+
+                const s =
+                    scale();
+
+
+                return {
+
+                    x:
+                        width / 2
+                        +
+                        point.x
+                        *
+                        s,
+
+                    y:
+                        height / 2
+                        +
+                        point.y
+                        *
+                        s
+
+                };
+
+            }
+
+
+            function rotatePoint(
+                point,
+                angle
+            ) {
+
+                const c =
+                    Math.cos(angle);
+
+
+                const s =
+                    Math.sin(angle);
+
+
+                return {
+
+                    x:
+                        point.x * c
+                        -
+                        point.y * s,
+
+                    y:
+                        point.x * s
+                        +
+                        point.y * c
+
+                };
+
+            }
+
+
+            /*
+            ============================================================
+            STRUCTURE
+
+            Brain coordinates are defined horizontally.
+
+            Root:
+            rotate whole thing +90 degrees.
+
+            Brain:
+            angle = 0.
+
+            SAME EXACT PATHS.
+            ============================================================
+            */
+
+
+            const seed = {
+                x: -0.92,
+                y: 0
+            };
+
+
+            /*
+            Outer paths now deliberately have
+            CLOUD / LOBE irregularities.
+
+            Notice there is NOT one clean ellipse.
+            */
+
+
+            const branches = [
+
+
+                /*
+                ============================================
+                TOP OUTER CONTOUR
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.pink,
+
+                    width:
+                        4.5,
+
+                    start:
+                        0.00,
+
+                    end:
+                        0.75,
+
+                    points: [
+
+                        { x: -0.92, y: 0.00 },
+
+                        { x: -0.86, y: -0.08 },
+
+                        { x: -0.80, y: -0.18 },
+
+                        { x: -0.68, y: -0.24 },
+
+                        { x: -0.59, y: -0.34 },
+
+                        { x: -0.46, y: -0.38 },
+
+                        { x: -0.34, y: -0.35 },
+
+                        { x: -0.24, y: -0.43 },
+
+                        { x: -0.10, y: -0.45 },
+
+                        { x: 0.00, y: -0.40 },
+
+                        { x: 0.13, y: -0.44 },
+
+                        { x: 0.25, y: -0.39 },
+
+                        { x: 0.31, y: -0.30 },
+
+                        { x: 0.43, y: -0.29 },
+
+                        { x: 0.54, y: -0.23 },
+
+                        { x: 0.58, y: -0.14 },
+
+                        { x: 0.67, y: -0.08 },
+
+                        { x: 0.72, y: 0.00 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                BOTTOM OUTER CONTOUR
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.pink,
+
+                    width:
+                        4.5,
+
+                    start:
+                        0.03,
+
+                    end:
+                        0.82,
+
+                    points: [
+
+                        { x: -0.92, y: 0.00 },
+
+                        { x: -0.87, y: 0.10 },
+
+                        { x: -0.78, y: 0.17 },
+
+                        { x: -0.74, y: 0.27 },
+
+                        { x: -0.64, y: 0.34 },
+
+                        { x: -0.51, y: 0.33 },
+
+                        { x: -0.42, y: 0.41 },
+
+                        { x: -0.28, y: 0.44 },
+
+                        { x: -0.18, y: 0.39 },
+
+                        { x: -0.05, y: 0.46 },
+
+                        { x: 0.08, y: 0.45 },
+
+                        { x: 0.18, y: 0.38 },
+
+                        { x: 0.30, y: 0.40 },
+
+                        { x: 0.41, y: 0.34 },
+
+                        { x: 0.44, y: 0.26 },
+
+                        { x: 0.55, y: 0.22 },
+
+                        { x: 0.63, y: 0.13 },
+
+                        { x: 0.72, y: 0.00 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                MAIN INTERNAL BRANCH
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.lightBlue,
+
+                    width:
+                        3.2,
+
+                    start:
+                        0.10,
+
+                    end:
+                        0.58,
+
+                    points: [
+
+                        { x: -0.80, y: -0.02 },
+
+                        { x: -0.66, y: -0.10 },
+
+                        { x: -0.55, y: -0.19 },
+
+                        { x: -0.43, y: -0.16 },
+
+                        { x: -0.34, y: -0.08 },
+
+                        { x: -0.22, y: -0.04 },
+
+                        { x: -0.12, y: 0.05 },
+
+                        { x: 0.00, y: 0.08 },
+
+                        { x: 0.12, y: 0.03 },
+
+                        { x: 0.22, y: 0.09 },
+
+                        { x: 0.32, y: 0.18 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                UPPER INTERNAL FOLD
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.purple,
+
+                    width:
+                        3,
+
+                    start:
+                        0.19,
+
+                    end:
+                        0.60,
+
+                    points: [
+
+                        { x: -0.64, y: -0.11 },
+
+                        { x: -0.62, y: -0.25 },
+
+                        { x: -0.52, y: -0.31 },
+
+                        { x: -0.42, y: -0.27 },
+
+                        { x: -0.36, y: -0.17 },
+
+                        { x: -0.25, y: -0.15 },
+
+                        { x: -0.18, y: -0.24 },
+
+                        { x: -0.07, y: -0.28 },
+
+                        { x: 0.01, y: -0.23 },
+
+                        { x: 0.03, y: -0.12 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                LOWER INTERNAL FOLD
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.blue,
+
+                    width:
+                        3,
+
+                    start:
+                        0.23,
+
+                    end:
+                        0.65,
+
+                    points: [
+
+                        { x: -0.72, y: 0.12 },
+
+                        { x: -0.59, y: 0.10 },
+
+                        { x: -0.49, y: 0.18 },
+
+                        { x: -0.41, y: 0.27 },
+
+                        { x: -0.29, y: 0.29 },
+
+                        { x: -0.18, y: 0.23 },
+
+                        { x: -0.08, y: 0.16 },
+
+                        { x: 0.02, y: 0.20 },
+
+                        { x: 0.13, y: 0.29 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                CENTRAL CROOKED FOLD
+
+                This replaces the old
+                straight seed-to-bottom line.
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.paleBlue,
+
+                    width:
+                        3.2,
+
+                    start:
+                        0.16,
+
+                    end:
+                        0.70,
+
+                    points: [
+
+                        { x: -0.54, y: -0.18 },
+
+                        { x: -0.48, y: -0.07 },
+
+                        { x: -0.50, y: 0.03 },
+
+                        { x: -0.42, y: 0.11 },
+
+                        { x: -0.45, y: 0.22 },
+
+                        { x: -0.35, y: 0.28 },
+
+                        { x: -0.25, y: 0.24 },
+
+                        { x: -0.17, y: 0.13 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                RIGHT INTERNAL FOLD
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.lightBlue,
+
+                    width:
+                        3,
+
+                    start:
+                        0.30,
+
+                    end:
+                        0.71,
+
+                    points: [
+
+                        { x: 0.03, y: -0.12 },
+
+                        { x: 0.13, y: -0.18 },
+
+                        { x: 0.23, y: -0.15 },
+
+                        { x: 0.27, y: -0.06 },
+
+                        { x: 0.37, y: -0.03 },
+
+                        { x: 0.42, y: 0.07 },
+
+                        { x: 0.37, y: 0.16 },
+
+                        { x: 0.30, y: 0.18 }
+
+                    ]
+
+                },
+
+
+                /*
+                ============================================
+                SMALL ROOT / GYRI BRANCHES
+                ============================================
+                */
+
+                {
+                    color:
+                        COLORS.lightBlue,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.31,
+
+                    end:
+                        0.52,
+
+                    points: [
+
+                        { x: -0.73, y: -0.03 },
+
+                        { x: -0.81, y: -0.10 },
+
+                        { x: -0.85, y: -0.17 }
+
+                    ]
+
+                },
+
+
+                {
+                    color:
+                        COLORS.lightBlue,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.35,
+
+                    end:
+                        0.54,
+
+                    points: [
+
+                        { x: -0.59, y: 0.10 },
+
+                        { x: -0.67, y: 0.18 },
+
+                        { x: -0.70, y: 0.26 }
+
+                    ]
+
+                },
+
+
+                {
+                    color:
+                        COLORS.purple,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.38,
+
+                    end:
+                        0.58,
+
+                    points: [
+
+                        { x: -0.36, y: -0.17 },
+
+                        { x: -0.31, y: -0.27 },
+
+                        { x: -0.24, y: -0.32 }
+
+                    ]
+
+                },
+
+
+                {
+                    color:
+                        COLORS.paleBlue,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.42,
+
+                    end:
+                        0.61,
+
+                    points: [
+
+                        { x: -0.45, y: 0.22 },
+
+                        { x: -0.50, y: 0.32 },
+
+                        { x: -0.44, y: 0.37 }
+
+                    ]
+
+                },
+
+
+                {
+                    color:
+                        COLORS.lightBlue,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.45,
+
+                    end:
+                        0.64,
+
+                    points: [
+
+                        { x: 0.23, y: -0.15 },
+
+                        { x: 0.30, y: -0.23 },
+
+                        { x: 0.38, y: -0.24 }
+
+                    ]
+
+                },
+
+
+                {
+                    color:
+                        COLORS.blue,
+
+                    width:
+                        2.2,
+
+                    start:
+                        0.49,
+
+                    end:
+                        0.68,
+
+                    points: [
+
+                        { x: 0.37, y: 0.16 },
+
+                        { x: 0.45, y: 0.22 },
+
+                        { x: 0.48, y: 0.30 }
+
+                    ]
+
+                }
+
+            ];
+
+
+            /*
+            ============================================================
+            PATH UTILITIES
+            ============================================================
+            */
+
+
+            function distance(
+                a,
+                b
+            ) {
+
+                return Math.hypot(
+                    b.x - a.x,
+                    b.y - a.y
+                );
+
+            }
+
+
+            function pathLength(
+                points
+            ) {
+
+                let total = 0;
+
+
+                for (
+                    let i = 1;
+                    i < points.length;
+                    i++
+                ) {
+
+                    total +=
+                        distance(
+                            points[i - 1],
+                            points[i]
+                        );
+
+                }
+
+
+                return total;
+
+            }
+
+
+            function partialPath(
+                points,
+                progress
+            ) {
+
+                progress =
+                    clamp(progress);
+
+
+                if (progress <= 0) {
+                    return [];
+                }
+
+
+                if (progress >= 1) {
+                    return points;
+                }
+
+
+                const total =
+                    pathLength(points);
+
+
+                const target =
+                    total * progress;
+
+
+                const result =
+                    [points[0]];
+
+
+                let drawn =
+                    0;
+
+
+                for (
+                    let i = 1;
+                    i < points.length;
+                    i++
+                ) {
+
+                    const a =
+                        points[i - 1];
+
+
+                    const b =
+                        points[i];
+
+
+                    const segment =
+                        distance(a, b);
+
+
+                    if (
+                        drawn + segment
+                        <=
+                        target
+                    ) {
+
+                        result.push(b);
+
+                        drawn +=
+                            segment;
+
+                    }
+
+                    else {
+
+                        const remaining =
+                            target - drawn;
+
+
+                        const ratio =
+                            segment === 0
+                                ?
+                                0
+                                :
+                                remaining / segment;
+
+
+                        result.push({
+
+                            x:
+                                lerp(
+                                    a.x,
+                                    b.x,
+                                    ratio
+                                ),
+
+                            y:
+                                lerp(
+                                    a.y,
+                                    b.y,
+                                    ratio
+                                )
+
+                        });
+
+
+                        break;
+
+                    }
+
+                }
+
+
+                return result;
+
+            }
+
+
+            function drawPath(
+                points,
+                color,
+                lineWidth,
+                alpha = 1
+            ) {
+
+                if (
+                    !points
+                    ||
+                    points.length < 2
+                ) {
+
+                    return;
+
+                }
+
+
+                ctx.save();
+
+
+                ctx.globalAlpha =
+                    alpha;
+
+
+                ctx.strokeStyle =
+                    color;
+
+
+                ctx.lineWidth =
+                    lineWidth;
+
+
+                ctx.lineCap =
+                    "round";
+
+
+                ctx.lineJoin =
+                    "round";
+
+
+                ctx.beginPath();
+
+
+                const first =
+                    toScreen(points[0]);
+
+
+                ctx.moveTo(
+                    first.x,
+                    first.y
+                );
+
+
+                for (
+                    let i = 1;
+                    i < points.length;
+                    i++
+                ) {
+
+                    const point =
+                        toScreen(
+                            points[i]
+                        );
+
+
+                    ctx.lineTo(
+                        point.x,
+                        point.y
+                    );
+
+                }
+
+
+                ctx.stroke();
+
+
+                ctx.restore();
+
+            }
+
+
+            /*
+            ============================================================
+            BACKGROUND GUIDES
+            ============================================================
+            */
+
+
+            function drawGuides() {
+
+                ctx.save();
+
+
+                ctx.strokeStyle =
+                    "rgba(88,166,255,0.045)";
+
+
+                ctx.lineWidth =
+                    1;
+
+
+                ctx.beginPath();
+
+
+                ctx.moveTo(
+                    width / 2,
+                    50
+                );
+
+
+                ctx.lineTo(
+                    width / 2,
+                    height - 50
+                );
+
+
+                ctx.stroke();
+
+
+                ctx.beginPath();
+
+
+                ctx.moveTo(
+                    60,
+                    height / 2
+                );
+
+
+                ctx.lineTo(
+                    width - 60,
+                    height / 2
+                );
+
+
+                ctx.stroke();
+
+
+                ctx.restore();
+
+            }
+
+
+            /*
+            ============================================================
+            SEED
+            ============================================================
+            */
+
+
+            function drawSeed(
+                point,
+                alpha = 1
+            ) {
+
+                const position =
+                    toScreen(point);
+
+
+                ctx.save();
+
+
+                ctx.globalAlpha =
+                    alpha;
+
+
+                const glow =
+                    ctx.createRadialGradient(
+                        position.x,
+                        position.y,
+                        0,
+                        position.x,
+                        position.y,
+                        36
+                    );
+
+
+                glow.addColorStop(
+                    0,
+                    "rgba(244,138,75,0.55)"
+                );
+
+
+                glow.addColorStop(
+                    1,
+                    "rgba(244,138,75,0)"
+                );
+
+
+                ctx.fillStyle =
+                    glow;
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
+                    position.x,
+                    position.y,
+                    36,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fill();
+
+
+                ctx.fillStyle =
+                    COLORS.orange;
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
+                    position.x,
+                    position.y,
+                    12,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fill();
+
+
+                ctx.strokeStyle =
+                    "rgba(244,138,75,0.65)";
+
+
+                ctx.lineWidth =
+                    2;
+
+
+                ctx.beginPath();
+
+
+                ctx.arc(
+                    position.x,
+                    position.y,
+                    20,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.stroke();
+
+
+                ctx.restore();
+
+            }
+
+
+            /*
+            ============================================================
+            STRUCTURE DRAWING
+            ============================================================
+            */
+
+
+            const ROOT_ANGLE =
+                Math.PI / 2;
+
+
+            function transformBranch(
+                branch,
+                angle
+            ) {
+
+                return branch.points.map(
+                    point =>
+                        rotatePoint(
+                            point,
+                            angle
+                        )
+                );
+
+            }
+
+
+            function drawGrowingRoot(
+                progress
+            ) {
+
+                drawSeed(
+                    rotatePoint(
+                        seed,
+                        ROOT_ANGLE
+                    )
+                );
+
+
+                branches.forEach(
+                    branch => {
+
+                        const local =
+                            clamp(
+                                (
+                                    progress
+                                    -
+                                    branch.start
+                                )
+                                /
+                                (
+                                    branch.end
+                                    -
+                                    branch.start
+                                )
+                            );
+
+
+                        const transformed =
+                            transformBranch(
+                                branch,
+                                ROOT_ANGLE
+                            );
+
+
+                        const visible =
+                            partialPath(
+                                transformed,
+                                easeOut(local)
+                            );
+
+
+                        drawPath(
+                            visible,
+                            branch.color,
+                            branch.width
+                        );
+
+                    }
+                );
+
+            }
+
+
+            function drawFullStructure(
+                angle,
+                alpha = 1
+            ) {
+
+                branches.forEach(
+                    branch => {
+
+                        drawPath(
+                            transformBranch(
+                                branch,
+                                angle
+                            ),
+                            branch.color,
+                            branch.width,
+                            alpha
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /*
+            ============================================================
+            ERASING
+
+            Nothing moves.
+
+            We progressively remove
+            complete branches from the
+            rear/right side toward
+            the front/left.
+            ============================================================
+            */
+
+
+            function branchAverageX(
+                branch
+            ) {
+
+                const total =
+                    branch.points.reduce(
+                        (
+                            sum,
+                            point
+                        ) =>
+                            sum + point.x,
+                        0
+                    );
+
+
+                return (
+                    total
+                    /
+                    branch.points.length
+                );
+
+            }
+
+
+            const eraseOrder =
+                [...branches]
+                    .sort(
+                        (
+                            a,
+                            b
+                        ) =>
+                            branchAverageX(b)
+                            -
+                            branchAverageX(a)
+                    );
+
+
+            function drawErasingBrain(
+                progress
+            ) {
+
+                const numberToErase =
+                    Math.floor(
+                        progress
+                        *
+                        eraseOrder.length
+                    );
+
+
+                const erased =
+                    new Set(
+                        eraseOrder
+                            .slice(
+                                0,
+                                numberToErase
+                            )
+                    );
+
+
+                branches.forEach(
+                    branch => {
+
+                        if (
+                            erased.has(branch)
+                        ) {
+                            return;
+                        }
+
+
+                        drawPath(
+                            branch.points,
+                            branch.color,
+                            branch.width
+                        );
+
+                    }
+                );
+
+
+                /*
+                Horizontal medical line begins
+                only near the end.
+                */
+
+
+                if (
+                    progress > 0.72
+                ) {
+
+                    const t =
+                        clamp(
+                            (
+                                progress
+                                -
+                                0.72
+                            )
+                            /
+                            0.28
+                        );
+
+
+                    drawPath(
+
+                        [
+
+                            {
+                                x:
+                                    -0.1,
+
+                                y:
+                                    0
+                            },
+
+                            {
+                                x:
+                                    lerp(
+                                        -0.1,
+                                        0.75,
+                                        t
+                                    ),
+
+                                y:
+                                    0
+                            }
+
+                        ],
+
+                        COLORS.ecg,
+
+                        4
+
+                    );
+
+                }
+
+            }
+
+
+            /*
+            ============================================================
+            ECG
+            ============================================================
+            */
+
+
+            const ecgPath = [
+
+                { x: -0.72, y: 0 },
+
+                { x: -0.33, y: 0 },
+
+                { x: -0.20, y: 0 },
+
+                { x: -0.13, y: -0.08 },
+
+                { x: -0.06, y: 0.16 },
+
+                { x: 0.02, y: -0.29 },
+
+                { x: 0.10, y: 0.18 },
+
+                { x: 0.20, y: 0 },
+
+                { x: 0.68, y: 0 }
+
+            ];
+
+
+            function drawECG(
+                progress
+            ) {
+
+                const visible =
+                    partialPath(
+                        ecgPath,
+                        progress
+                    );
+
+
+                drawPath(
+                    visible,
+                    COLORS.ecg,
+                    4.5
+                );
+
+
+                if (
+                    progress > 0.72
+                ) {
+
+                    const heartProgress =
+                        clamp(
+                            (
+                                progress
+                                -
+                                0.72
+                            )
+                            /
+                            0.28
+                        );
+
+
+                    const center =
+                        toScreen({
+                            x: 0.55,
+                            y: -0.08
+                        });
+
+
+                    const size =
+                        42
+                        *
+                        easeOut(
+                            heartProgress
+                        );
+
+
+                    ctx.save();
+
+
+                    ctx.strokeStyle =
+                        "#ff79aa";
+
+
+                    ctx.lineWidth =
+                        4;
+
+
+                    ctx.lineJoin =
+                        "round";
+
+
+                    ctx.shadowColor =
+                        "#ff79aa";
+
+
+                    ctx.shadowBlur =
+                        13;
+
+
+                    ctx.beginPath();
+
+
+                    const samples =
+                        100;
+
+
+                    for (
+                        let i = 0;
+                        i <= samples;
+                        i++
+                    ) {
+
+                        const a =
+                            i
+                            /
+                            samples
+                            *
+                            Math.PI
+                            *
+                            2;
+
+
+                        const hx =
+                            16
+                            *
+                            Math.pow(
+                                Math.sin(a),
+                                3
+                            );
+
+
+                        const hy =
+                            -(
+                                13
+                                *
+                                Math.cos(a)
+
+                                -
+
+                                5
+                                *
+                                Math.cos(
+                                    2 * a
+                                )
+
+                                -
+
+                                2
+                                *
+                                Math.cos(
+                                    3 * a
+                                )
+
+                                -
+
+                                Math.cos(
+                                    4 * a
+                                )
+                            );
+
+
+                        const x =
+                            center.x
+                            +
+                            hx
+                            *
+                            size
+                            /
+                            32;
+
+
+                        const y =
+                            center.y
+                            +
+                            hy
+                            *
+                            size
+                            /
+                            32;
+
+
+                        if (
+                            i === 0
+                        ) {
+
+                            ctx.moveTo(
+                                x,
+                                y
+                            );
+
+                        }
+
+                        else {
+
+                            ctx.lineTo(
+                                x,
+                                y
+                            );
+
+                        }
+
+                    }
+
+
+                    ctx.stroke();
+
+
+                    ctx.restore();
+
+                }
+
+            }
+
+
+            /*
+            ============================================================
+            TIMELINE
+            ============================================================
+            */
+
+
+            const cycleDuration =
+                17000;
+
+
+            const startTime =
+                performance.now();
+
+
+            function animate(
+                currentTime
+            ) {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                drawGuides();
+
+
+                const elapsed =
+                    (
+                        currentTime
+                        -
+                        startTime
+                    )
+                    %
+                    cycleDuration;
+
+
+                const t =
+                    elapsed
+                    /
+                    cycleDuration;
+
+
+                /*
+                ----------------------------------------
+                1 — GROW
+                ----------------------------------------
+                */
+
+                if (
+                    t < 0.34
+                ) {
+
+                    statusElement.textContent =
+                        "Growing";
+
+
+                    drawGrowingRoot(
+                        easeOut(
+                            t
+                            /
+                            0.34
+                        )
+                    );
+
+                }
+
+
+                /*
+                ----------------------------------------
+                2 — HOLD ROOT
+                ----------------------------------------
+                */
+
+                else if (
+                    t < 0.40
+                ) {
+
+                    statusElement.textContent =
+                        "Root";
+
+
+                    drawGrowingRoot(
+                        1
+                    );
+
+                }
+
+
+                /*
+                ----------------------------------------
+                3 — ROTATE
+                ----------------------------------------
+                */
+
+                else if (
+                    t < 0.53
+                ) {
+
+                    statusElement.textContent =
+                        "Rotating";
+
+
+                    const local =
+                        easeInOut(
+                            (
+                                t
+                                -
+                                0.40
+                            )
+                            /
+                            0.13
+                        );
+
+
+                    const angle =
+                        lerp(
+                            ROOT_ANGLE,
+                            0,
+                            local
+                        );
+
+
+                    drawFullStructure(
+                        angle
+                    );
+
+
+                    drawSeed(
+                        rotatePoint(
+                            seed,
+                            angle
+                        ),
+                        1 - local
+                    );
+
+                }
+
+
+                /*
+                ----------------------------------------
+                4 — BRAIN
+                ----------------------------------------
+                */
+
+                else if (
+                    t < 0.62
+                ) {
+
+                    statusElement.textContent =
+                        "Brain";
+
+
+                    drawFullStructure(
+                        0
+                    );
+
+                }
+
+
+                /*
+                ----------------------------------------
+                5 — ERASE
+                ----------------------------------------
+                */
+
+                else if (
+                    t < 0.80
+                ) {
+
+                    statusElement.textContent =
+                        "Erasing";
+
+
+                    drawErasingBrain(
+                        easeInOut(
+                            (
+                                t
+                                -
+                                0.62
+                            )
+                            /
+                            0.18
+                        )
+                    );
+
+                }
+
+
+                /*
+                ----------------------------------------
+                6 — ECG
+                ----------------------------------------
+                */
+
+                else {
+
+                    statusElement.textContent =
+                        "Pulse";
+
+
+                    drawECG(
+                        easeOut(
+                            (
+                                t
+                                -
+                                0.80
+                            )
+                            /
+                            0.20
+                        )
+                    );
+
+                }
+
+
+                requestAnimationFrame(
+                    animate
+                );
+
+            }
+
+
+            /*
+            ============================================================
+            IMMEDIATE VISIBILITY TEST
+
+            Draw this BEFORE starting
+            requestAnimationFrame.
+
+            If you can see this orange seed,
+            JavaScript is definitely running.
+            ============================================================
+            */
+
+
+            ctx.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            drawGuides();
+
+
+            drawSeed(
+                rotatePoint(
+                    seed,
+                    ROOT_ANGLE
+                )
+            );
+
+
+            statusElement.textContent =
+                "Running";
+
+
+            /*
+            Start animation.
+            */
+
+
+            requestAnimationFrame(
+                animate
+            );
+
+
+        }
+
+        catch (error) {
+
+
+            console.error(
+                error
+            );
+
+
+            statusElement.textContent =
+                "Error";
+
+
+            errorElement.style.display =
+                "block";
+
+
+            errorElement.textContent =
+                "Animation error: "
+                +
+                error.message;
+
+        }
+
+    </script>
+
 </body>
+
 </html>
